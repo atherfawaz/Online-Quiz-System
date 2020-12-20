@@ -10,6 +10,8 @@ import CourseGrid from "./pages/CourseGrid";
 import QuizIntro from "./pages/quizIntro";
 import QuizResult from "./pages/quizResult";
 import Quiz from "./pages/quiz";
+import CreateClass from "./pages/createclass";
+import CreateQuiz from "./pages/createquiz";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/quiz" exact component={Quiz}></Route>
         <Route path="/quizintro" exact component={QuizIntro}></Route>
         <Route path="/quizresult" exact component={QuizResult}></Route>
+        <Route path="/createclass" exact component={CreateClass}></Route>
+        <Route path="/createquiz" exact component={CreateQuiz}></Route>
       </div>
     </Router>
   );

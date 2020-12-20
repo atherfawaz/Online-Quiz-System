@@ -12,7 +12,7 @@ function createQuiz() {
         	<div class="banner-img"><img src="images/banner/contact-us.jpg" alt=""/></div>
             <div class="page-title">	
 	            <div class="container">
-                    <h1>Create A Quiz</h1>
+                    <h1>CreateQuiz</h1>
                 </div>
             </div>
         </section>
@@ -20,7 +20,7 @@ function createQuiz() {
         	<div class="container">
             	<ul>
                 	<li><a href="#">Home</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Create Quiz</a></li>
                 </ul>
             </div>
         </section>

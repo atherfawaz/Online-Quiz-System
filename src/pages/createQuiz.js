@@ -12,7 +12,7 @@ function createQuiz() {
         	<div class="banner-img"><img src="images/banner/contact-us.jpg" alt=""/></div>
             <div class="page-title">	
 	            <div class="container">
-                    <h1>Contact Us</h1>
+                    <h1>Create A Quiz</h1>
                 </div>
             </div>
         </section>

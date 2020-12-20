@@ -30,7 +30,7 @@ function App() {
         <Route path="/quizintro" exact component={QuizIntro}></Route>
         <Route path="/quizresult" exact component={QuizResult}></Route>
         <Route path="/createclass" exact component={CreateClass}></Route>
-        <Route path="/createquiz" exact component={CreateQuiz}></Route>
+        <Route path="/createquiz" exact component={createQuiz}></Route>
       </div>
     </Router>
   );

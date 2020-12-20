@@ -20,7 +20,6 @@ function App() {
           exact
           component={AccountSettings}
         ></Route>
-        <Route component={InvalidPage}></Route>
       </div>
     </Router>
   );

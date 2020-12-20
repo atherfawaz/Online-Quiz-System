@@ -25,7 +25,7 @@ function NavBar() {
           <nav id="nav-main">
             <div class="navbar navbar-inverse">
               <div class="navbar-header">
-                <a href="index.html" class="navbar-brand">
+                <a href="./home" class="navbar-brand">
                   <img src="images/logo.png" alt="" />
                 </a>
                 <button

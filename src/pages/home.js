@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
 
@@ -31,9 +32,11 @@ function Home() {
                     <a href="#">Lost Password? </a>
                   </div>
                 </div>
-                <div class="submit-slide">
-                  <input type="submit" value="Login" class="btn" />
-                </div>
+                <Link to="courses">
+                  <div class="submit-slide">
+                    <input type="submit" value="Login" class="btn" />
+                  </div>
+                </Link>
               </div>
               <div class="col-sm-6">
                 <div class="section-title">
@@ -52,9 +55,11 @@ function Home() {
                 <div class="input-box">
                   <input type="password" placeholder="Re-Password" />
                 </div>
-                <div class="submit-slide">
-                  <input type="submit" value="SIGN UP" class="btn" />
-                </div>
+                <Link to="courses">
+                  <div class="submit-slide">
+                    <input type="submit" value="Sign Up" class="btn" />
+                  </div>
+                </Link>
               </div>
             </div>
             <div class="sosiyal-login">

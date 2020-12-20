@@ -55,7 +55,7 @@ function Home() {
                 <div class="input-box">
                   <input type="password" placeholder="Re-Password" />
                 </div>
-                <Link to="createclass">
+                <Link to="viewquizhistory">
                   <div class="submit-slide">
                     <input type="submit" value="Login" class="btn" />
                   </div>

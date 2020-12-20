@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 
 function Home() {
   return (
-    <div class="wapper">
+    <div className="wapper">
       <Loader />
       <NavBar />
     </div>

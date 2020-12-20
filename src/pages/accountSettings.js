@@ -82,50 +82,143 @@ function AccountSettings() {
                             <div class="tab-content changePassword-con">
                                 <div class="change-password ">
                                     <div class="input-box">
-                                        <input type="text" placeholder="Current Password"/>
+                                        <input type="text" placeholder="Current Password" />
+                                    </div>
+                                    <div class="input-box">
+                                        <input type="text" placeholder="New Password" />
+                                    </div>
+                                    <div class="input-box">
+                                        <input type="text" placeholder="Confirm Password" />
+                                    </div>
+                                    <div class="submit-box">
+                                        <input type="submit" value="Save" class="btn" />
+                                    </div>
+                                </div>
                             </div>
-                                        <div class="input-box">
-                                            <input type="text" placeholder="New Password"/>
+                        </div>
+                    </div>
+                    <section class="our-advantages">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="advantages-box">
+                                        <div class="img"><img src="images/learn-icon.png" alt="" /></div>
+                                        <h3>Learn at your own place</h3>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stanypesetting, </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="advantages-box">
+                                        <div class="img"><img src="images/save-timeIcon.png" alt="" /></div>
+                                        <h3>Save time and money</h3>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="advantages-box">
+                                        <div class="img"><img src="images/online-learningIcon.png" alt="" /></div>
+                                        <h3>100% Online learning</h3>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </p>
+                                    </div>
+                                </div>
                             </div>
-                                            <div class="input-box">
-                                                <input type="text" placeholder="Confirm Password"/>
-                            </div>
-                                                <div class="submit-box">
-                                                    <input type="submit" value="Save" class="btn"/>
-                            </div>
-                                                </div>
-                                            </div>
+                        </div>
+                    </section>
+                </div>
+                <footer id="footer">
+                    <div class="footer-top">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3">
+                                    <h5>Popular Courses</h5>
+                                    <div class="course-slide">
+                                        <div class="img"><img src="images/blog/post-img1.jpg" alt="" /></div>
+                                        <p><a href="/">when an unknown printer took </a></p>
+                                        <div class="price">$55</div>
+                                    </div>
+                                    <div class="course-slide">
+                                        <div class="img"><img src="images/blog/post-img2.jpg" alt="" /></div>
+                                        <p><a href="courses-list-sideBar.html">when an unknown printer took </a></p>
+                                        <div class="price">$505</div>
+                                    </div>
+                                    <div class="course-slide">
+                                        <div class="img"><img src="images/blog/post-img3.jpg" alt="" /></div>
+                                        <p><a href="courses-list.html">when an unknown printer took </a></p>
+                                        <div class="price">$178</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-md-offset-1 col-sm-6 col-md-5 col-xs-6">
+                                            <h5>Company</h5>
+                                            <ul class="footer-link">
+                                                <li><a href="about-us.html">About Us</a></li>
+                                                <li><a href="contact-us.html">Contact</a></li>
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="event.html">Event</a></li>
+                                                <li><a href="gallery.html">Gallery</a></li>
+                                                <li><a href="instructor-profile.html">Instructor Profile</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-offset-1 col-sm-6 col-md-5 col-xs-6">
+                                            <h5>Links</h5>
+                                            <ul class="footer-link">
+                                                <li><a href="courses-list.html">Courses List</a></li>
+                                                <li><a href="price-plan.html">Pricing Table</a></li>
+                                                <li><a href="instructors.html">Instructors</a></li>
+                                                <li><a href="forums.html">Forums</a></li>
+                                                <li><a href="faq.html">Faq</a></li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <section class="our-advantages">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="advantages-box">
-                                                        <div class="img"><img src="images/learn-icon.png" alt=""/></div>
-                                                            <h3>Learn at your own place</h3>
-                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stanypesetting, </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <div class="advantages-box">
-                                                            <div class="img"><img src="images/save-timeIcon.png" alt=""/></div>
-                                                                <h3>Save time and money</h3>
-                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="advantages-box">
-                                                                <div class="img"><img src="images/online-learningIcon.png" alt=""/></div>
-                                                                    <h3>100% Online learning</h3>
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-            </section>
-                                            </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <h5>Contact Us</h5>
+                                    <div class="contact-view">
+                                        <div class="contact-slide">
+                                            <p><i class="fa fa-location-arrow"></i>76 Woodland Ave. Sherman Drive  <br />Fort Walton Beach,Harlingen</p>
                                         </div>
+                                        <div class="contact-slide">
+                                            <p><i class="fa fa-phone"></i>+299 97 39 82</p>
+                                        </div>
+                                        <div class="contact-slide">
+                                            <p><i class="fa fa-fax"></i>(08) 8971 7450</p>
+                                        </div>
+                                        <div class="contact-slide">
+                                            <p><i class="fa fa-envelope"></i><a href="mailTo:academy@info.com">academy@info.com</a></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="copy-right">
+                                    <p>Copyright © <span class="year">2016</span> Academy.</p>
+                                    <ul class="footer-link">
+                                        <li><a href="#">Terms and Conditions</a></li>
+                                        <li><a href="#">Privacy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 ">
+                                <div class="social-media">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
     );
 }

@@ -4,9 +4,12 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import LoginRegister from "./pages/loginregister";
 import Home from "./pages/home";
 import InvalidPage from "./pages/invalidPage";
+import CourseDetails from "./pages/CourseDetails";
 import AccountSettings from "./pages/accountSettings";
 import CourseGrid from "./pages/CourseGrid";
 import QuizIntro from "./pages/quizIntro";
+import QuizResult from "./pages/quizResult";
+import Quiz from "./pages/quiz";
 
 function App() {
   return (
@@ -16,8 +19,14 @@ function App() {
         <Route path="/home" exact component={Home}></Route>
         <Route path="/login" exact component={LoginRegister}></Route>
         <Route path="/courses" exact component={CourseGrid}></Route>
-        <Route path="/account-settings" exact component={AccountSettings}></Route>
+        <Route
+          path="/account-settings"
+          exact
+          component={AccountSettings}
+        ></Route>
+        <Route path="/quiz" exact component={Quiz}></Route>
         <Route path="/quizintro" exact component={QuizIntro}></Route>
+        <Route path="/quizresult" exact component={QuizResult}></Route>
       </div>
     </Router>
   );

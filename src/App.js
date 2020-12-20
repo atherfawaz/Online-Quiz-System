@@ -7,6 +7,7 @@ import InvalidPage from "./pages/invalidPage";
 import AccountSettings from "./pages/accountSettings";
 import CourseGrid from "./pages/CourseGrid";
 import QuizIntro from "./pages/quizIntro";
+import QuizResult from "./pages/quizResult";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/courses" exact component={CourseGrid}></Route>
         <Route path="/account-settings" exact component={AccountSettings}></Route>
         <Route path="/quizintro" exact component={QuizIntro}></Route>
+        <Route path="/quizresult" exact component={QuizResult}></Route>
       </div>
     </Router>
   );

@@ -8,7 +8,11 @@ import CourseDetails from "./pages/CourseDetails";
 import AccountSettings from "./pages/accountSettings";
 import CourseGrid from "./pages/CourseGrid";
 import QuizIntro from "./pages/quizIntro";
+<<<<<<< HEAD
 import Quiz from "./pages/quiz";
+=======
+import QuizResult from "./pages/quizResult";
+>>>>>>> khizars
 
 function App() {
   return (
@@ -24,8 +28,12 @@ function App() {
           component={AccountSettings}
         ></Route>
         <Route path="/quizintro" exact component={QuizIntro}></Route>
+<<<<<<< HEAD
         <Route path="/coursedetails" exact component={CourseDetails}></Route>
         <Route path="/quiz" exact component={Quiz}></Route>
+=======
+        <Route path="/quizresult" exact component={QuizResult}></Route>
+>>>>>>> khizars
       </div>
     </Router>
   );

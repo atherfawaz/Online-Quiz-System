@@ -39,6 +39,7 @@ function createQuiz() {
                                     <i class="fa fa-map-marker"></i>
                                 </div>
                                 <h4>MCQ</h4>
+                                <a href="mailTo:hello@gmail.com">hello@gmail.com</a>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -46,9 +47,8 @@ function createQuiz() {
                                 <div class="icon-box">
                                     <i class="fa fa-phone"></i>
                                 </div>
-                                <h4>phone number</h4>
-                                <p>(02)121 321 322</p>
-                                <p>(02)121 321 322</p>
+                                <h4>Short Question</h4>
+                                <a href="mailTo:hello@gmail.com">hello@gmail.com</a>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -56,7 +56,7 @@ function createQuiz() {
                                 <div class="icon-box">
                                     <i class="fa fa-envelope"></i>
                                 </div>
-                                <h4>email address</h4>
+                                <h4>Long Question</h4>
                                 <p><a href="mailTo:hello@gmail.com">hello@gmail.com</a></p>
                             </div>
                         </div>
@@ -97,8 +97,6 @@ function createQuiz() {
                     </form>
                 </div>
             </div>
-        </section>
-        <section class="contact-map" id="map">
         </section>
     </div>
   );

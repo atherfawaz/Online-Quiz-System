@@ -24,11 +24,45 @@ function createQuiz() {
                 </ul>
             </div>
         </section>
+        <section class="contact-message">
+        	<div class="container">
+            	<div class="section-title">
+                	<h2>Quiz Settings</h2>
+                </div>
+                <div class="form-filde">
+                    <form action="http://design.dev.drcsystems.ooo:8084/themeforest/academy/html/thank-you.html" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-box">
+                                    <input type="text" placeholder="Quiz #" data-validation="required" name="quiznum"/>
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="Time Required" data-validation="required" name="time"/>
+                                </div>
+                                <div class="input-box">
+                                    <input type="date" placeholder="Date" data-validation="required" name="date" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-box">
+                                    <textarea placeholder="Additional Instructions" data-validation="required" name="instr"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="submit-box">
+                                    <input type="submit" value="SEND" class="btn"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
         <section class="contact-detail">
         	<div class="container">
                 <div class="section-title">
                     
-                    <h2>Create A Quiz</h2>
+                    <h2>Questions</h2>
                     <p>Please choose questions from the question pool linked to the class</p>
                 </div>
                 <div class="contact-boxView">
@@ -39,7 +73,7 @@ function createQuiz() {
                                     <i class="fa fa-map-marker"></i>
                                 </div>
                                 <h4>MCQ</h4>
-                                <a href="mailTo:hello@gmail.com">hello@gmail.com</a>
+                                <a href="#">Choose from Pool</a>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -48,7 +82,7 @@ function createQuiz() {
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <h4>Short Question</h4>
-                                <a href="mailTo:hello@gmail.com">hello@gmail.com</a>
+                                <a href="#">Choose from Pool</a>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -57,44 +91,10 @@ function createQuiz() {
                                     <i class="fa fa-envelope"></i>
                                 </div>
                                 <h4>Long Question</h4>
-                                <p><a href="mailTo:hello@gmail.com">hello@gmail.com</a></p>
+                                <p><a href="#">Choose from Pool</a></p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <section class="contact-message">
-        	<div class="container">
-            	<div class="section-title">
-                	<h2>SENT A MESSAGE</h2>
-                </div>
-                <div class="form-filde">
-                    <form action="http://design.dev.drcsystems.ooo:8084/themeforest/academy/html/thank-you.html" method="post">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="input-box">
-                                    <input type="text" placeholder="Name" data-validation="required" name="name"/>
-                                </div>
-                                <div class="input-box">
-                                    <input type="text" placeholder="Email" data-validation="required" name="email"/>
-                                </div>
-                                <div class="input-box">
-                                    <input type="text" placeholder="Subject" data-validation="required" name="subject" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="input-box">
-                                    <textarea placeholder="Message" data-validation="required" name="message"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="submit-box">
-                                    <input type="submit" value="SEND" class="btn"/>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </section>

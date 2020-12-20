@@ -28,7 +28,7 @@ function CourseGrid() {
         	<div class="container">
             	<div class="filter-row">
                 	<div class="view-type">
-                    	<a href="courses-gride.html" class="active"><i class="fa fa-th-large"></i></a>
+                    	<a href="courses-grid.html" class="active"><i class="fa fa-th-large"></i></a>
                         <a href="courses-list.html"><i class="fa fa-list"></i></a>
                     </div>
                 	<div class="search">
@@ -55,7 +55,7 @@ function CourseGrid() {
                                     <div class="box"><i class="fa fa-users"></i>35 Enrolled</div>
                                 </div>
                                 <div class="rating">
-                                    <div class="fill" style="width:45%"></div>
+                                    <div class="fill" style={{width:'45%'}}></div>
                                 </div>
                                 <div class="view-btn">
                                 	<a href="course-details.html" class="btn">view more</a>
@@ -81,7 +81,7 @@ function CourseGrid() {
  	                            	<div class="box"><i class="fa fa-users"></i>35 Enrolled</div>
                                 </div>
                                 <div class="rating">
-                                	<div class="fill" style="width:45%"></div>
+                                	<div class="fill" style={{width:'45%'}}></div>
                                 </div>
                                 <div class="view-btn">
                                 	<a href="course-details-free.html" class="btn">view more</a>
@@ -107,7 +107,7 @@ function CourseGrid() {
  	                            	<div class="box"><i class="fa fa-users"></i>35 Enrolled</div>
                                 </div>
                                 <div class="rating">
-                                	<div class="fill" style="width:45%"></div>
+                                	<div class="fill" style={{width:'45%'}}></div>
                                 </div>
                                 <div class="view-btn">
                                 	<a href="course-details.html" class="btn">view more</a>
@@ -133,7 +133,7 @@ function CourseGrid() {
  	                            	<div class="box"><i class="fa fa-users"></i>35 Enrolled</div>
                                 </div>
                                 <div class="rating">
-                                	<div class="fill" style="width:45%"></div>
+                                	<div class="fill" style={{width:'45%'}}></div>
                                 </div>
                                 <div class="view-btn">
                                 	<a href="course-details.html" class="btn">view more</a>
@@ -159,7 +159,7 @@ function CourseGrid() {
  	                            	<div class="box"><i class="fa fa-users"></i>35 Enrolled</div>
                                 </div>
                                 <div class="rating">
-                                	<div class="fill" style="width:45%"></div>
+                                	<div class="fill" style={{width:'45%'}}></div>
                                 </div>
                                 <div class="view-btn">
                                 	<a href="course-details.html" class="btn">view more</a>
@@ -185,7 +185,7 @@ function CourseGrid() {
                                     <div class="box"><i class="fa fa-users"></i>35 Enrolled</div>
                                 </div>
                                 <div class="rating">
-                                    <div class="fill" style="width:45%"></div>
+                                    <div class="fill" style={{width:'45%'}}></div>
                                 </div>
                                 <div class="view-btn">
                                 	<a href="course-details.html" class="btn">view more</a>
@@ -211,7 +211,7 @@ function CourseGrid() {
  	                            	<div class="box"><i class="fa fa-users"></i>35 Enrolled</div>
                                 </div>
                                 <div class="rating">
-                                	<div class="fill" style="width:45%"></div>
+                                	<div class="fill" style={{width:'45%'}}></div>
                                 </div>
                                 <div class="view-btn">
                                 	<a href="course-details.html" class="btn">view more</a>
@@ -237,7 +237,7 @@ function CourseGrid() {
  	                            	<div class="box"><i class="fa fa-users"></i>35 Enrolled</div>
                                 </div>
                                 <div class="rating">
-                                	<div class="fill" style="width:45%"></div>
+                                	<div class="fill" style={{width:'45%'}}></div>
                                 </div>
                                 <div class="view-btn">
                                 	<a href="course-details-free.html" class="btn">view more</a>

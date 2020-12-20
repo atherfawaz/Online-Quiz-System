@@ -153,7 +153,7 @@ function quiz() {
                   </div>
                 </div>
                 <div class="submit-quiz">
-                  <a href="quiz-result.html" class="btn">
+                  <a href="/quizresult" class="btn">
                     submit quiz
                   </a>
                 </div>

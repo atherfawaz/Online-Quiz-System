@@ -59,24 +59,26 @@ function AccountSettings() {
                             </div>
                             <div className="tab-content order-con">
                                 <table className="booking-viewTable">
-                                    <tr>
-                                        <th>Courses ID</th>
-                                        <th className="detail"> Courses Details</th>
-                                        <th>Purchase Date</th>
-                                        <th>Amount</th>
-                                    </tr>
-                                    <tr>
-                                        <td><span className="small-heading">Courses ID</span>258452112500</td>
-                                        <td className="detail">
-                                            <span className="small-heading">Courses Details</span>
-                                            <div className="detailTd">
-                                                <label>Hiraba Farm</label>
-                                                <p>Behind Shalby Hospital, Garden Road, Prahlad Nagar , Ahmedabad-380015</p>
-                                            </div>
-                                        </td>
-                                        <td><span className="small-heading">Purchase Date</span>25<sup>th</sup> Aug 2015</td>
-                                        <td><span className="small-heading">Amount</span>Rs. 42,710</td>
-                                    </tr>
+                                    <tbody>
+                                        <tr>
+                                            <th>Courses ID</th>
+                                            <th className="detail"> Courses Details</th>
+                                            <th>Purchase Date</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                        <tr>
+                                            <td><span className="small-heading">Courses ID</span>258452112500</td>
+                                            <td className="detail">
+                                                <span className="small-heading">Courses Details</span>
+                                                <div className="detailTd">
+                                                    <label>Hiraba Farm</label>
+                                                    <p>Behind Shalby Hospital, Garden Road, Prahlad Nagar , Ahmedabad-380015</p>
+                                                </div>
+                                            </td>
+                                            <td><span className="small-heading">Purchase Date</span>25<sup>th</sup> Aug 2015</td>
+                                            <td><span className="small-heading">Amount</span>Rs. 42,710</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                             <div className="tab-content changePassword-con">

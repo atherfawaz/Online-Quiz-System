@@ -12,6 +12,7 @@ import QuizResult from "./pages/quizResult";
 import Quiz from "./pages/quiz";
 import CreateClass from "./pages/createclass";
 import createQuiz from "./pages/createQuiz";
+import AddQuestions from "./pages/addQuestions";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/quizresult" exact component={QuizResult}></Route>
         <Route path="/createclass" exact component={CreateClass}></Route>
         <Route path="/createquiz" exact component={createQuiz}></Route>
+        <Route path="/addquestions" exact component={AddQuestions}></Route>
       </div>
     </Router>
   );

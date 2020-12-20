@@ -50,6 +50,9 @@ function NavBar() {
                   <li>
                     <a href="./work">Work</a>
                   </li>
+                  <li>
+                    <a href="./login">Login/Register</a>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -70,7 +70,7 @@ function createQuiz() {
                         <div class="col-sm-4">
                             <div class="contact-box yello">
                                 <div class="icon-box">
-                                    <i class="fa fa-map-marker"></i>
+                                    <i class="fa fa-list-ul"></i>
                                 </div>
                                 <h4>MCQ</h4>
                                 <a href="#">Choose from Pool</a>
@@ -79,7 +79,7 @@ function createQuiz() {
                         <div class="col-sm-4">
                             <div class="contact-box green">
                                 <div class="icon-box">
-                                    <i class="fa fa-phone"></i>
+                                    <i class="fa fa-pencil"></i>
                                 </div>
                                 <h4>Short Question</h4>
                                 <a href="#">Choose from Pool</a>
@@ -88,7 +88,7 @@ function createQuiz() {
                         <div class="col-sm-4">
                             <div class="contact-box red">
                                 <div class="icon-box">
-                                    <i class="fa fa-envelope"></i>
+                                    <i class="fa fa-align-center"></i>
                                 </div>
                                 <h4>Long Question</h4>
                                 <p><a href="#">Choose from Pool</a></p>

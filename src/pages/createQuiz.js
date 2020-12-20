@@ -24,40 +24,6 @@ function createQuiz() {
                 </ul>
             </div>
         </section>
-        <section class="contact-message">
-        	<div class="container">
-            	<div class="section-title">
-                	<h2>Quiz Settings</h2>
-                </div>
-                <div class="form-filde">
-                    <form action="http://design.dev.drcsystems.ooo:8084/themeforest/academy/html/thank-you.html" method="post">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="input-box">
-                                    <input type="text" placeholder="Quiz #" data-validation="required" name="quiznum"/>
-                                </div>
-                                <div class="input-box">
-                                    <input type="text" placeholder="Time Required" data-validation="required" name="time"/>
-                                </div>
-                                <div class="input-box">
-                                    <input type="date" placeholder="Date" data-validation="required" name="date" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="input-box">
-                                    <textarea placeholder="Additional Instructions" data-validation="required" name="instr"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="submit-box">
-                                    <input type="submit" value="SEND" class="btn"/>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
         <section class="contact-detail">
         	<div class="container">
                 <div class="section-title">
@@ -95,6 +61,40 @@ function createQuiz() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-message">
+        	<div class="container">
+            	<div class="section-title">
+                	<h2>Quiz Settings</h2>
+                </div>
+                <div class="form-filde">
+                    <form action="http://design.dev.drcsystems.ooo:8084/themeforest/academy/html/thank-you.html" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-box">
+                                    <input type="text" placeholder="Quiz #" data-validation="required" name="quiznum"/>
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="Time Required" data-validation="required" name="time"/>
+                                </div>
+                                <div class="input-box">
+                                    <input type="date" placeholder="Date" data-validation="required" name="date" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-box">
+                                    <textarea placeholder="Additional Instructions" data-validation="required" name="instr"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="submit-box">
+                                    <input type="submit" value="Create" class="btn"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>

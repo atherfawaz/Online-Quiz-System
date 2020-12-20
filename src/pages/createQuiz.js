@@ -39,7 +39,7 @@ function createQuiz() {
                                     <i class="fa fa-list-ul"></i>
                                 </div>
                                 <h4>MCQ</h4>
-                                <a href="#">Choose from Pool</a>
+                                <a href="/addquestions">Choose from Pool</a>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -48,7 +48,7 @@ function createQuiz() {
                                     <i class="fa fa-pencil"></i>
                                 </div>
                                 <h4>Short Question</h4>
-                                <a href="#">Choose from Pool</a>
+                                <a href="/addquestions">Choose from Pool</a>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -57,7 +57,7 @@ function createQuiz() {
                                     <i class="fa fa-align-center"></i>
                                 </div>
                                 <h4>Long Question</h4>
-                                <p><a href="#">Choose from Pool</a></p>
+                                <p><a href="/addquestions">Choose from Pool</a></p>
                             </div>
                         </div>
                     </div>

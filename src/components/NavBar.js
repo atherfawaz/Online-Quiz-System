@@ -25,7 +25,7 @@ function NavBar() {
           <nav id="nav-main">
             <div class="navbar navbar-inverse">
               <div class="navbar-header">
-                <a href="index.html" class="navbar-brand">
+                <a href="./home" class="navbar-brand">
                   <img src="images/logo.png" alt="" />
                 </a>
                 <button
@@ -48,7 +48,7 @@ function NavBar() {
                     <a href="./courses">Courses</a>
                   </li>
                   <li>
-                    <a href="./work">Work</a>
+                    <a href="./quizintro">Quiz</a>
                   </li>
                   <li>
                     <a href="./login">Login/Register</a>

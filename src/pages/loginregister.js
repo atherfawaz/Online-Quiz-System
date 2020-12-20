@@ -1,9 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
 
 function LoginRegister() {
+  const testFunction = () => {
+    console.log("Button clicked");
+  };
+
   return (
     <div className="wapper">
       <Loader />
@@ -31,9 +36,16 @@ function LoginRegister() {
                     <a href="#">Lost Password? </a>
                   </div>
                 </div>
-                <div class="submit-slide">
-                  <input type="submit" value="Login" class="btn" />
-                </div>
+                <Link to="./courses">
+                  <div class="submit-slide">
+                    <input
+                      type="submit"
+                      value="Login"
+                      class="btn"
+                      onClick={testFunction}
+                    />
+                  </div>
+                </Link>
               </div>
               <div class="col-sm-6">
                 <div class="section-title">

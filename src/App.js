@@ -11,7 +11,7 @@ import QuizIntro from "./pages/quizIntro";
 import QuizResult from "./pages/quizResult";
 import Quiz from "./pages/quiz";
 import CreateClass from "./pages/createclass";
-import CreateQuiz from "./pages/createquiz";
+import createQuiz from "./pages/createQuiz";
 
 function App() {
   return (

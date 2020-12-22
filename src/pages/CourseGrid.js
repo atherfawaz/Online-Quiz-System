@@ -38,7 +38,7 @@ function CourseGrid() {
       { isStudent ? (<div></div>) : (<section class="create-classes">
         <div></div>
         <div></div>
-        <Link to={{pathname:'/createclass', state:{type: 0}}}>
+        <Link to={{pathname:'/createclass', state:{type: 1}}}>
           <button class='btn' type="submit">Create a Class</button>
         </Link>
       </section>)

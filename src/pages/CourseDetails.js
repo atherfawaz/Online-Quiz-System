@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 
 function CourseDetails() {
   const location = useLocation();
-  const isStudent = 0;
+  const isStudent = location.state.type===0?true:false;
 
   console.log(isStudent);
   return (

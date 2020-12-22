@@ -1,10 +1,21 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "../App.css";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
 
 function Home() {
+  
+  // const history = useHistory();
+  // const studentLogin = () => {
+  //   history.push({pathname:'/courses', state:{type:0}});
+  // }
+  // const teachLogin = () => {
+  //   history.push({pathname:'/courses', state:{type:1}});
+  
+  
+  
   return (
     <div className="wapper">
       <Loader />
@@ -32,9 +43,9 @@ function Home() {
                     <a href="#">Lost Password? </a>
                   </div>
                 </div>
-                <Link to="courses">
+                <Link to={{pathname:'/courses', state:{type: 0}}}>
                   <div class="submit-slide">
-                    <input type="submit" value="Login" class="btn" />
+                    <button type='submit' class="btn">Login</button>
                   </div>
                 </Link>
               </div>
@@ -55,9 +66,9 @@ function Home() {
                 <div class="input-box">
                   <input type="password" placeholder="Re-Password" />
                 </div>
-                <Link to="viewquizhistory">
+                <Link to={{pathname: '/courses', state: {type: 1}}}>
                   <div class="submit-slide">
-                    <input type="submit" value="Login" class="btn" />
+                    <button type="submit" class="btn">Login</button>
                   </div>
                 </Link>
               </div>

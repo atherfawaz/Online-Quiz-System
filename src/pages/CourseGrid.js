@@ -1,9 +1,14 @@
 import React from "react";
+import { Link, useLocation } from 'react-router-dom';
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
 
 function CourseGrid() {
+  const location = useLocation();
+  const isStudent = location.state.type === 0 ? true : false;
+  console.log(isStudent);
+
   return (
     <div class="wapper">
       <Loader />
@@ -30,6 +35,14 @@ function CourseGrid() {
           </ul>
         </div>
       </section>
+      { isStudent ? (<div></div>) : (<section class="create-classes">
+        <div></div>
+        <div></div>
+        <Link to={{pathname:'/createclass', state:{type: 0}}}>
+          <button class='btn' type="submit">Create a Class</button>
+        </Link>
+      </section>)
+      }
       <section class="courses-view">
         <div class="container">
           <div class="row">
@@ -59,11 +72,13 @@ function CourseGrid() {
                   <div class="rating">
                     <div class="fill" style={{ width: "45%" }}></div>
                   </div>
-                  <div class="view-btn">
-                    <a href="coursedetails" class="btn">
-                      view more
-                    </a>
-                  </div>
+                  <Link to={{ pathname: '/coursedetails', state: { type: location.state.type } }}>
+                    <div class="view-btn">
+                      {
+                        isStudent ? (<button type="submit" class="btn"> view more</button>) : (<button type='submit' class="btn"> view more</button>)
+                      }
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

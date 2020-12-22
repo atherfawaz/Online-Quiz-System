@@ -47,9 +47,9 @@ function NavBar() {
                   <li>
                     <a href="./courses">Courses</a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="./quizintro">Quiz</a>
-                  </li>
+                  </li> */}
                   <li>
                     <a href="./login">Login/Register</a>
                   </li>

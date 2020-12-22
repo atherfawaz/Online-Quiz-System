@@ -1,30 +1,25 @@
 import React from "react";
-import { useLocation, Link } from 'react-router-dom';
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
 
-function CourseDetails() {
-  const location = useLocation();
-  const isStudent = 0;
-
-  console.log(isStudent);
+function CourseDetailsTeacher() {
   return (
     <div className="wapper">
       <Loader />
       <NavBar />
-      <section className="banner inner-page">
-        <div className="banner-img">
+      <section class="banner inner-page">
+        <div class="banner-img">
           <img src="images/banner/courses-banner.jpg" alt="" />
         </div>
-        <div className="page-title">
-          <div className="container">
+        <div class="page-title">
+          <div class="container">
             <h1>courses details</h1>
           </div>
         </div>
       </section>
-      <section className="breadcrumb">
-        <div className="container">
+      <section class="breadcrumb">
+        <div class="container">
           <ul>
             <li>
               <a href="#">Home</a>
@@ -38,79 +33,66 @@ function CourseDetails() {
           </ul>
         </div>
       </section>
-      <div className="course-details">
-        <div className="container">
+      <div class="course-details">
+        <div class="container">
           <h2>Basic Time Management Course</h2>
-          <div className="course-details-main">
-            <div className="course-img">
+          <div class="course-details-main">
+            <div class="course-img">
               <img src="images/courses/courses-img8.jpg" alt="" />
             </div>
-            <div className="course-info">
-              <div className="course-box">
-                <div className="icon">
-                  <i className="fa fa-file"></i>
+            <div class="course-info">
+              <div class="course-box">
+                <div class="icon">
+                  <i class="fa fa-file"></i>
                 </div>
                 <p>17 Lessons</p>
               </div>
-              <div className="course-box">
-                <div className="icon">
-                  <i className="fa fa-exclamation"></i>
+              <div class="course-box">
+                <div class="icon">
+                  <i class="fa fa-exclamation"></i>
                 </div>
                 <p>7 Quizzes</p>
               </div>
-              <div className="course-box">
-                <div className="icon">
-                  <i className="fa fa-file-text-o"></i>
+              <div class="course-box">
+                <div class="icon">
+                  <i class="fa fa-file-text-o"></i>
                 </div>
                 <p>13 Documents</p>
               </div>
-              <div className="course-box">
-                <div className="icon">
-                  <i className="fa fa-video-camera"></i>
+              <div class="course-box">
+                <div class="icon">
+                  <i class="fa fa-video-camera"></i>
                 </div>
                 <p>9 vedio</p>
               </div>
-              <div className="course-box">
-                <div className="icon">
-                  <i className="fa fa-mortar-board"></i>
+              <div class="course-box">
+                <div class="icon">
+                  <i class="fa fa-mortar-board"></i>
                 </div>
                 <p>1719 Students</p>
               </div>
             </div>
-            <div className="row">
-              <div className="col-sm-6">
-                <div className="course-instructorInfo">
-                  <div className="info-slide">
-                    <i className="fa fa-user-secret"></i>Rebecca Smith
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="course-instructorInfo">
+                  <div class="info-slide">
+                    <i class="fa fa-user-secret"></i>Rebecca Smith
                   </div>
-                  <div className="info-slide">
-                    <i className="fa fa-calendar"></i>16-09-2016 - 15-08-2018{" "}
+                  <div class="info-slide">
+                    <i class="fa fa-calendar"></i>16-09-2016 - 15-08-2018{" "}
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6">
-                <div className="btn-row">
-                  <div>
-                    {
-                      isStudent ? (<div></div>) : (
-                        <Link to={{ pathname: '/viewquizhistory', state: { type: location.state.type } }}><button type="submit" class="btn">Edit Pool</button></Link>)
-                    }
-                  </div>
-                  <div>
-                    {
-                      isStudent ? (<Link to={{ pathname: '/viewquizhistory', state: { type: location.state.type } }}><button type="submit" class="btn">Quiz History</button></Link>) : (
-                        <Link to={{ pathname: '/viewquizhistory', state: { type: location.state.type } }}><button type="submit" class="btn">Quiz History</button></Link>)
-                    }
-                  </div>
-                  {
-                    isStudent ? (<Link to={{ pathname: '/quizintro', state: { type: location.state.type } }}><button type='submit' class='btn'>Take Quiz</button></Link>)
-                      : (<Link to={{ pathname: '/createquiz', state: { type: location.state.type } }}><button type='submit' class='btn'>Create Quiz</button></Link>)
-                  }
+              <div class="col-sm-6">
+                <div class="btn-row">
+                  <a href="/createquiz" class="btn">
+                    <i class="fa fa-cart-plus"></i>Create a Quiz
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          <div className="info">
+          <div class="info">
             <h4>Course Overview</h4>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -134,98 +116,98 @@ function CourseDetails() {
               reasonable.{" "}
             </p>
           </div>
-          <div className="instructors">
+          <div class="instructors">
             <h4>Meet The Instructors</h4>
-            <div className="row">
-              <div className="col-sm-4">
-                <div className="instructors-box">
-                  <div className="img">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="instructors-box">
+                  <div class="img">
                     <img src="images/user-img/img6.jpg" alt="" />
                   </div>
-                  <div className="name">variations passages</div>
-                  <div className="designation">reasonable</div>
+                  <div class="name">variations passages</div>
+                  <div class="designation">reasonable</div>
                   <p>
                     There are many variations of passages of Lorem Ipsum
                     available, but the majority have suffered alteration in some
                     form, by injected humour, or{" "}
                   </p>
-                  <div className="link">
+                  <div class="link">
                     <a href="instructor-profile.html">More Info</a>
                   </div>
                 </div>
               </div>
-              <div className="col-sm-4">
-                <div className="instructors-box">
-                  <div className="img">
+              <div class="col-sm-4">
+                <div class="instructors-box">
+                  <div class="img">
                     <img src="images/user-img/img7.jpg" alt="" />
                   </div>
-                  <div className="name">variations passages</div>
-                  <div className="designation">reasonable</div>
+                  <div class="name">variations passages</div>
+                  <div class="designation">reasonable</div>
                   <p>
                     There are many variations of passages of Lorem Ipsum
                     available, but the majority have suffered alteration in some
                     form, by injected humour, or{" "}
                   </p>
-                  <div className="link">
+                  <div class="link">
                     <a href="instructor-profile.html">More Info</a>
                   </div>
                 </div>
               </div>
-              <div className="col-sm-4">
-                <div className="instructors-box">
-                  <div className="img">
+              <div class="col-sm-4">
+                <div class="instructors-box">
+                  <div class="img">
                     <img src="images/user-img/img8.jpg" alt="" />
                   </div>
-                  <div className="name">variations passages</div>
-                  <div className="designation">reasonable</div>
+                  <div class="name">variations passages</div>
+                  <div class="designation">reasonable</div>
                   <p>
                     There are many variations of passages of Lorem Ipsum
                     available, but the majority have suffered alteration in some
                     form, by injected humour, or{" "}
                   </p>
-                  <div className="link">
+                  <div class="link">
                     <a href="instructor-profile.html">More Info</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="syllabus">
+          <div class="syllabus">
             <h4>Syllabus</h4>
-            <div className="syllabus-box">
-              <div className="syllabus-title">1st lesson</div>
-              <div className="syllabus-view first">
-                <div className="main-point active">
+            <div class="syllabus-box">
+              <div class="syllabus-title">1st lesson</div>
+              <div class="syllabus-view first">
+                <div class="main-point active">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting
                 </div>
-                <div className="point-list">
+                <div class="point-list">
                   <ul>
                     <li>
                       <a href="course-lessons.html">
                         vedio : Lorem ipsum dolor sit amet.{" "}
-                        <span className="hover-text">
-                          Watch Video<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          Watch Video<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="course-lessons.html">
                         Document : semper dolor quis lectus facilisis laoreet.{" "}
-                        <span className="hover-text">
-                          Let's Go<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          Let's Go<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="quiz-intro.html">
                         Quizzes : auctor quam quis commodo feugiat.{" "}
-                        <span className="hover-text">
-                          upgrade now<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          upgrade now<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
-                    <li className="no-link">
+                    <li class="no-link">
                       There are many variations of passages of Lorem Ipsum
                       available,{" "}
                     </li>
@@ -233,44 +215,44 @@ function CourseDetails() {
                 </div>
               </div>
             </div>
-            <div className="syllabus-box">
-              <div className="syllabus-title">2st lesson</div>
-              <div className="syllabus-view">
-                <div className="main-point">
+            <div class="syllabus-box">
+              <div class="syllabus-title">2st lesson</div>
+              <div class="syllabus-view">
+                <div class="main-point">
                   It is a long established fact that a reader will be distracted
                   by the
                 </div>
-                <div className="point-list">
+                <div class="point-list">
                   <ul>
                     <li>
                       <a href="course-lessons.html">
                         Lessons : auctor quam quis commodo feugiat.{" "}
-                        <span className="hover-text">
-                          understand now<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          understand now<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="course-lessons.html">
                         vedio : Lorem ipsum dolor sit amet.{" "}
-                        <span className="hover-text">
-                          Watch Video<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          Watch Video<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="course-lessons.html">
                         Document : semper dolor quis lectus facilisis laoreet.{" "}
-                        <span className="hover-text">
-                          Let's Go<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          Let's Go<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="quiz-intro.html">
                         Quizzes : auctor quam quis commodo feugiat.{" "}
-                        <span className="hover-text">
-                          upgrade now<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          upgrade now<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
@@ -278,36 +260,36 @@ function CourseDetails() {
                 </div>
               </div>
             </div>
-            <div className="syllabus-box">
-              <div className="syllabus-title">3st lesson</div>
-              <div className="syllabus-view">
-                <div className="main-point">
+            <div class="syllabus-box">
+              <div class="syllabus-title">3st lesson</div>
+              <div class="syllabus-view">
+                <div class="main-point">
                   readable content of a page when looking at its layout. The
                   point of{" "}
                 </div>
-                <div className="point-list">
+                <div class="point-list">
                   <ul>
                     <li>
                       <a href="course-lessons.html">
                         Lessons : auctor quam quis commodo feugiat.{" "}
-                        <span className="hover-text">
-                          understand now<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          understand now<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="course-lessons.html">
                         vedio : Lorem ipsum dolor sit amet.{" "}
-                        <span className="hover-text">
-                          Watch Video<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          Watch Video<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="course-lessons.html">
                         Document : semper dolor quis lectus facilisis laoreet.{" "}
-                        <span className="hover-text">
-                          Let's Go<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          Let's Go<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
@@ -315,36 +297,36 @@ function CourseDetails() {
                 </div>
               </div>
             </div>
-            <div className="syllabus-box">
-              <div className="syllabus-title">4st lesson</div>
-              <div className="syllabus-view">
-                <div className="main-point">
+            <div class="syllabus-box">
+              <div class="syllabus-title">4st lesson</div>
+              <div class="syllabus-view">
+                <div class="main-point">
                   using Lorem Ipsum is that it has a more-or-less normal
                   distribution{" "}
                 </div>
-                <div className="point-list">
+                <div class="point-list">
                   <ul>
                     <li>
                       <a href="course-lessons.html">
                         Lessons : auctor quam quis commodo feugiat.{" "}
-                        <span className="hover-text">
-                          understand now<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          understand now<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="course-lessons.html">
                         vedio : Lorem ipsum dolor sit amet.{" "}
-                        <span className="hover-text">
-                          Watch Video<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          Watch Video<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="quiz-intro.html">
                         Quizzes : auctor quam quis commodo feugiat.{" "}
-                        <span className="hover-text">
-                          upgrade now<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          upgrade now<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
@@ -352,35 +334,35 @@ function CourseDetails() {
                 </div>
               </div>
             </div>
-            <div className="syllabus-box">
-              <div className="syllabus-title">5st lesson</div>
-              <div className="syllabus-view">
-                <div className="main-point">
+            <div class="syllabus-box">
+              <div class="syllabus-title">5st lesson</div>
+              <div class="syllabus-view">
+                <div class="main-point">
                   of letters, as opposed to using 'Content here, content here',{" "}
                 </div>
-                <div className="point-list">
+                <div class="point-list">
                   <ul>
                     <li>
                       <a href="course-lessons.html">
                         Lessons : auctor quam quis commodo feugiat.{" "}
-                        <span className="hover-text">
-                          understand now<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          understand now<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="course-lessons.html">
                         Document : semper dolor quis lectus facilisis laoreet.{" "}
-                        <span className="hover-text">
-                          Let's Go<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          Let's Go<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="quiz-intro.html">
                         Quizzes : auctor quam quis commodo feugiat.{" "}
-                        <span className="hover-text">
-                          upgrade now<i className="fa fa-angle-right"></i>
+                        <span class="hover-text">
+                          upgrade now<i class="fa fa-angle-right"></i>
                         </span>
                       </a>
                     </li>
@@ -389,68 +371,68 @@ function CourseDetails() {
               </div>
             </div>
           </div>
-          <div className="reviews">
+          <div class="reviews">
             <h4>Reviews</h4>
-            <div className="row">
-              <div className="col-sm-5">
-                <div className="rating-info">
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="rating-info">
                   <label>Detailed Rating</label>
-                  <div className="rating-slide">
+                  <div class="rating-slide">
                     <span>Stars 5</span>
-                    <div className="bar">
-                      <div className="fill" style={{ width: "50%" }}></div>
+                    <div class="bar">
+                      <div class="fill" style={{ width: "50%" }}></div>
                     </div>
                     <em>10</em>
                   </div>
-                  <div className="rating-slide">
+                  <div class="rating-slide">
                     <span>Stars 4</span>
-                    <div className="bar">
-                      <div className="fill" style={{ width: "40%" }}></div>
+                    <div class="bar">
+                      <div class="fill" style={{ width: "40%" }}></div>
                     </div>
                     <em>8</em>
                   </div>
-                  <div className="rating-slide">
+                  <div class="rating-slide">
                     <span>Stars 3</span>
-                    <div className="bar">
-                      <div className="fill" style={{ width: "30%" }}></div>
+                    <div class="bar">
+                      <div class="fill" style={{ width: "30%" }}></div>
                     </div>
                     <em>6</em>
                   </div>
-                  <div className="rating-slide">
+                  <div class="rating-slide">
                     <span>Stars 2</span>
-                    <div className="bar">
-                      <div className="fill" style={{ width: "35%" }}></div>
+                    <div class="bar">
+                      <div class="fill" style={{ width: "35%" }}></div>
                     </div>
                     <em>7</em>
                   </div>
-                  <div className="rating-slide">
+                  <div class="rating-slide">
                     <span>Stars 1</span>
-                    <div className="bar">
-                      <div className="fill" style={{ width: "0" }}></div>
+                    <div class="bar">
+                      <div class="fill" style={{ width: "0" }}></div>
                     </div>
                     <em>0</em>
                   </div>
                 </div>
               </div>
-              <div className="col-sm-5">
+              <div class="col-sm-5">
                 <label>Average Rating</label>
-                <div className="rating-box">
-                  <div className="rating">4.3</div>
-                  <div className="rating-star">
-                    <div className="fill" style={{ width: "86%" }}></div>
+                <div class="rating-box">
+                  <div class="rating">4.3</div>
+                  <div class="rating-star">
+                    <div class="fill" style={{ width: "86%" }}></div>
                   </div>
                   <span>31 Ratings</span>
                 </div>
               </div>
             </div>
-            <div className="reviews-view">
+            <div class="reviews-view">
               <h4>Reviews List</h4>
-              <div className="reviews-slide">
-                <div className="img">
+              <div class="reviews-slide">
+                <div class="img">
                   <img src="images/user-img/student-img1.png" alt="" />
                 </div>
-                <div className="rating-star">
-                  <div className="fill" style={{ width: "82%" }}></div>
+                <div class="rating-star">
+                  <div class="fill" style={{ width: "82%" }}></div>
                 </div>
                 <span>5 Day ago</span>
                 <p>
@@ -461,12 +443,12 @@ function CourseDetails() {
                   Lorem Ipsum, you{" "}
                 </p>
               </div>
-              <div className="reviews-slide">
-                <div className="img">
+              <div class="reviews-slide">
+                <div class="img">
                   <img src="images/user-img/student-img1.png" alt="" />
                 </div>
-                <div className="rating-star">
-                  <div className="fill" style={{ width: "69%" }}></div>
+                <div class="rating-star">
+                  <div class="fill" style={{ width: "69%" }}></div>
                 </div>
                 <span>5 Month ago</span>
                 <p>
@@ -477,12 +459,12 @@ function CourseDetails() {
                   Lorem Ipsum, you{" "}
                 </p>
               </div>
-              <div className="reviews-slide">
-                <div className="img">
+              <div class="reviews-slide">
+                <div class="img">
                   <img src="images/user-img/student-img1.png" alt="" />
                 </div>
-                <div className="rating-star">
-                  <div className="fill" style={{ width: "70%" }}></div>
+                <div class="rating-star">
+                  <div class="fill" style={{ width: "70%" }}></div>
                 </div>
                 <span>2.5 Years ago</span>
                 <p>
@@ -501,4 +483,4 @@ function CourseDetails() {
   );
 }
 
-export default CourseDetails;
+export default CourseDetailsTeacher;

@@ -79,7 +79,9 @@ function CreateClass() {
                 </div>
                 <div class="col-sm-12">
                   <div class="submit-box">
+                    <Link to={{pathname:'/courses', state:{type: 1}}}>
                     <input type="submit" value="Create class" class="btn" />
+                    </Link>
                   </div>
                 </div>
               </div>

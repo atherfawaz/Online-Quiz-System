@@ -93,7 +93,7 @@ function CourseDetails() {
                   <div>
                     {
                       isStudent ? (<div></div>) : (
-                        <Link to={{ pathname: '/viewquizhistory', state: { type: location.state.type } }}><button type="submit" class="btn">Edit Pool</button></Link>)
+                        <Link to={{ pathname: '/createpool', state: { type: location.state.type } }}><button type="submit" class="btn">Edit Pool</button></Link>)
                     }
                   </div>
                   <div>

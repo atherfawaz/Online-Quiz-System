@@ -24,11 +24,11 @@ mongoose.connect(CRED.DB, { useNewUrlParser: true, useUnifiedTopology: true }, (
 
 // endpoints
 app.post('/login-authentication', (req, response) => {
-    
-    response.status(200).json({ 'msg': "successful" });
-})
 
-app.post('/register-user', (req, res) => {
+    response.status(200).json({ 'msg': "successful" });
+});
+
+app.post('/register-user', async (req, res) => {
     // perform field validaiton
     const schema = joi.object({
         name: joi.string().min(6).max(100).required(),
@@ -36,19 +36,16 @@ app.post('/register-user', (req, res) => {
         password: joi.string().alphanum().min(6).required(),
         type: joi.number().integer().min(0).max(1).required()
     });
-    const {error} = schema.validate(req.body);
-    if(error) return res.status(400).json({"error":error.details[0].message});
+    const { error } = schema.validate(req.body);
+    if (error) return res.status(400).json({ "error": error.details[0].message });
 
     // check if already exists in database
-    const email_exists = User.findOne({email: req.body.email});
-    if(email_exists){
-        console.log(email_exists);
-        // res.status(400).json({"error":"email already exists"});
-    }
+    const email_exists = await User.findOne({ email: req.body.email });
+    if (email_exists) return res.status(400).json({ "error": "email already exists" });
 
     // encrypt password
-    const salt = bcrypt.genSalt(10);
-    const hashed = bcrypt.hash(req.body.password, salt);
+    const salt = await bcrypt.genSalt(10);
+    const hashed = await bcrypt.hash(req.body.password, salt);
 
     // save user in db
     const user = new User({
@@ -58,17 +55,14 @@ app.post('/register-user', (req, res) => {
         type: Number(req.body.type),
         classes: []
     });
-
-    user.save()
-        .then((data) => {
-            console.log(data);
-            res.status(200).json({ "msg": "success", "data": data });
-        })
-        .catch((e) => {
-            console.log(e); res.status(400).json({ "error": e });
-        });
-
-})
+    try {
+        const result = await user.save();
+        res.status(200).json({ "msg": "success", "data": result });
+    }
+    catch (e) {
+        console.log(e); res.status(400).json({ "e": error });
+    }
+});
 
 app.post('/get-courses', (req, response) => {
     console.log(req.body.username);
@@ -76,7 +70,7 @@ app.post('/get-courses', (req, response) => {
     console.log(req.body.password);
     console.log(req.body.userType);
     response.status(200).json({ 'msg': "successful" });
-})
+});
 
 //server start notification
 var server = app.listen(8000, () => {

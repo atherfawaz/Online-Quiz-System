@@ -38,10 +38,10 @@ function Home() {
 
   const Register = () => {
     axios.post('http://localhost:8000/register-user', {
-      username: register_username,
+      name: register_username,
       password: register_password,
       email: register_email,
-      userType: register_userType
+      type: register_userType
     })
       .then(function (response) {
         console.log(response);

@@ -3,6 +3,7 @@ const cors = require('cors');
 const CRED = require("./cred");
 const mongoose = require("mongoose");
 const User = require("./models/User");
+const joi = require("joi");
 
 // necessary middleware
 var app = express();
@@ -39,7 +40,7 @@ app.post('/register-user', (req, response) => {
         password: req.body.password,
         type: Number(req.body.userType),
         classes: []
-    });
+    }); 
     user.save()
         .then((data) => {
             console.log(data);

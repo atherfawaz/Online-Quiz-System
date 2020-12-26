@@ -46,8 +46,11 @@ function Home() {
       .then(function (response) {
         console.log(response);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
+        if(error.response){
+          console.log(error.response);
+        }
       });
   };
 
@@ -94,13 +97,13 @@ function Home() {
                   <input type="text" placeholder={register_email} onChange={(e) => setRegister_Email(e.target.value)} />
                 </div>
                 <div class="input-box">
-                <input type="text" placeholder={register_userType} onChange={(e) => setRegister_userType(e.target.value)} />
+                  <input type="text" placeholder={register_userType} onChange={(e) => setRegister_userType(e.target.value)} />
                 </div>
                 <div class="input-box">
                   <input type="password" placeholder={register_password} onChange={(e) => setRegister_Password(e.target.value)} />
                 </div>
                 <div class="submit-slide">
-                  <input type="submit" value="SIGN UP" class="btn"onClick={Register} />
+                  <input type="submit" value="SIGN UP" class="btn" onClick={Register} />
                 </div>
               </div>
             </div>

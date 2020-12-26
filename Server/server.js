@@ -4,6 +4,7 @@ const CRED = require("./cred");
 const mongoose = require("mongoose");
 const User = require("./models/User");
 const joi = require("joi");
+const bcrypt = require('bcrypt');
 
 // necessary middleware
 var app = express();
@@ -23,31 +24,48 @@ mongoose.connect(CRED.DB, { useNewUrlParser: true, useUnifiedTopology: true }, (
 
 // endpoints
 app.post('/login-authentication', (req, response) => {
-    console.log(req.body.username);
-    console.log(req.body.password);
-    console.log(req.body.user_type);
+    
     response.status(200).json({ 'msg': "successful" });
 })
 
-app.post('/register-user', (req, response) => {
-    console.log(req.body.username);
-    console.log(req.body.email);
-    console.log(req.body.password);
-    console.log(req.body.userType);
+app.post('/register-user', (req, res) => {
+    // perform field validaiton
+    const schema = joi.object({
+        name: joi.string().min(6).max(100).required(),
+        email: joi.string().min(5).email().required(),
+        password: joi.string().alphanum().min(6).required(),
+        type: joi.number().integer().min(0).max(1).required()
+    });
+    const {error} = schema.validate(req.body);
+    if(error) return res.status(400).json({"error":error.details[0].message});
+
+    // check if already exists in database
+    const email_exists = User.findOne({email: req.body.email});
+    if(email_exists){
+        console.log(email_exists);
+        // res.status(400).json({"error":"email already exists"});
+    }
+
+    // encrypt password
+    const salt = bcrypt.genSalt(10);
+    const hashed = bcrypt.hash(req.body.password, salt);
+
+    // save user in db
     const user = new User({
-        name: req.body.username,
+        name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
-        type: Number(req.body.userType),
+        password: hashed,
+        type: Number(req.body.type),
         classes: []
-    }); 
+    });
+
     user.save()
         .then((data) => {
             console.log(data);
-            response.status(200).json({ "msg": "success", "data": data });
+            res.status(200).json({ "msg": "success", "data": data });
         })
         .catch((e) => {
-            console.log(e); response.status(400).json({ "error": e });
+            console.log(e); res.status(400).json({ "error": e });
         });
 
 })

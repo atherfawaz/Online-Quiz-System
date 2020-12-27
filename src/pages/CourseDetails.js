@@ -1,12 +1,12 @@
 import React from "react";
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from "react-router-dom";
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
 
 function CourseDetails() {
   const location = useLocation();
-  const isStudent = location.state.type===0?true:false;
+  const isStudent = location.state.type === 0 ? true : false;
 
   console.log(isStudent);
   return (
@@ -91,21 +91,69 @@ function CourseDetails() {
               <div className="col-sm-6">
                 <div className="btn-row">
                   <div>
-                    {
-                      isStudent ? (<div></div>) : (
-                        <Link to={{ pathname: '/createpool', state: { type: location.state.type } }}><button type="submit" class="btn">Edit Pool</button></Link>)
-                    }
+                    {isStudent ? (
+                      <div></div>
+                    ) : (
+                      <Link
+                        to={{
+                          pathname: "/createpool",
+                          state: { type: location.state.type },
+                        }}
+                      >
+                        <button type="submit" class="btn">
+                          Edit Pool
+                        </button>
+                      </Link>
+                    )}
                   </div>
                   <div>
-                    {
-                      isStudent ? (<Link to={{ pathname: '/viewquizhistory', state: { type: location.state.type } }}><button type="submit" class="btn">Quiz History</button></Link>) : (
-                        <Link to={{ pathname: '/viewquizhistory', state: { type: location.state.type } }}><button type="submit" class="btn">Quiz History</button></Link>)
-                    }
+                    {isStudent ? (
+                      <Link
+                        to={{
+                          pathname: "/viewquizhistory",
+                          state: { type: location.state.type },
+                        }}
+                      >
+                        <button type="submit" class="btn">
+                          Quiz History
+                        </button>
+                      </Link>
+                    ) : (
+                      <Link
+                        to={{
+                          pathname: "/viewquizhistory",
+                          state: { type: location.state.type },
+                        }}
+                      >
+                        <button type="submit" class="btn">
+                          Quiz History
+                        </button>
+                      </Link>
+                    )}
                   </div>
-                  {
-                    isStudent ? (<Link to={{ pathname: '/quizintro', state: { type: location.state.type } }}><button type='submit' class='btn'>Take Quiz</button></Link>)
-                      : (<Link to={{ pathname: '/createquiz', state: { type: location.state.type } }}><button type='submit' class='btn'>Create Quiz</button></Link>)
-                  }
+                  {isStudent ? (
+                    <Link
+                      to={{
+                        pathname: "/quizintro",
+                        state: { type: location.state.type },
+                      }}
+                    >
+                      <button type="submit" class="btn">
+                        Take Quiz
+                      </button>
+                    </Link>
+                  ) : (
+                    <Link
+                      to={{
+                        pathname: "/createquiz",
+                        state: { type: location.state.type },
+                      }}
+                    >
+                      <button type="submit" class="btn">
+                        Create Quiz
+                      </button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

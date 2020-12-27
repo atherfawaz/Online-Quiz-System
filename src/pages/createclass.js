@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
+const axios = require("axios");
 
 function CreateClass() {
-  const val = () => {
-    console.log("Here");
+  const [name, setName] = useState("Class/Course Name");
+  const [code, setCode] = useState("Course Code");
+  const [semester, setSemester] = useState("Semester");
+  const history = useHistory();
+
+  const addCourse = async () => {
+    try {
+      console.log("i got to addCourse function");
+      if (localStorage.token) {
+        const res = axios.post("http://localhost:8000/create-course", {
+          token: localStorage.token,
+          tuid: localStorage.uid,
+          name: name,
+          code: code,
+          semester: Number(semester)
+        });
+        console.log(res);
+        console.log("added course");
+        history.replace({ pathname: '/courses', state: { "id": localStorage.uid, "isStudent": localStorage.isStudent } });
+      }
+      else {
+        console.log("Stll here")
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
   };
+
+
   return (
     <div className="wapper">
       <Loader />
@@ -40,48 +68,44 @@ function CreateClass() {
             <h2>Enter details to add a new class</h2>
           </div>
           <div class="form-filde">
-            <form action="/courses">
+            <form onSubmit={addCourse}>
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <input
                       type="text"
-                      placeholder="Class/Course Name"
+                      placeholder={name}
                       data-validation="required"
                       name="name"
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
                     />
                   </div>
                   <div class="input-box">
                     <input
                       type="text"
-                      placeholder="Section"
+                      placeholder={code}
                       data-validation="required"
                       name="email"
+                      onChange={e => setCode(e.target.value)}
                     />
                   </div>
                   <div class="input-box">
                     <input
                       type="text"
-                      placeholder="Timings/Schedule"
+                      placeholder={semester}
                       data-validation="required"
                       name="subject"
+                      onChange={e => setSemester(e.target.value)}
                     />
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="input-box">
-                    <textarea
-                      placeholder="Description"
-                      data-validation="required"
-                      name="message"
-                    ></textarea>
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <div class="submit-box">
-                    <Link to={{pathname:'/courses', state:{type: 1}}}>
+                    {/* <Link to={{ pathname: "/courses", state: { type: 1 } }}> */}
                     <input type="submit" value="Create class" class="btn" />
-                    </Link>
+                    {/* </Link> */}
                   </div>
                 </div>
               </div>

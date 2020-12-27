@@ -8,7 +8,7 @@ const axios = require("axios");
 function CourseGrid() {
   const history = useHistory();
   const isStudent = localStorage.isStudent;
-  console.log("isstudent? : ", isStudent);
+  console.log(localStorage.isStudent);
 
   const [courses, SetCourses] = useState([]);
 
@@ -32,8 +32,9 @@ function CourseGrid() {
         console.log(error);
       });
   };
-  const renderButtons = () => {
-    if (isStudent===true) {
+  const renderButtons = (test) => {
+    if (test===true) {
+      console.log("is student is true");
       return (
         <section class="create-classes">
           <button class="btn" type="submit">Join a Class</button>
@@ -75,7 +76,7 @@ function CourseGrid() {
         </div>
       </section>
       <div>
-       {renderButtons()}
+       {renderButtons(isStudent)}
       </div>
       <section class="courses-view">
         <div class="container">

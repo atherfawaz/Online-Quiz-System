@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 import Loader from "../components/Loader";
@@ -8,14 +8,16 @@ const axios = require("axios");
 function CourseGrid() {
   const location = useLocation();
   const isStudent = localStorage.isStudent;
+  console.log("isstudent? : ", isStudent);
   
-  const [questions, SetQuestions] = useState([
-    { CourseName: "SE", CourseInstructor: "Bander", selected: false },
-    { CourseName: "SE", CourseInstructor: "Bander", selected: false },
-    { CourseName: "SE", CourseInstructor: "Bander", selected: false },
-  ]);
+  const [courses, SetCourses] = useState([]);
 
-  const RenderCourses = () => {
+  useEffect(()=>{
+    console.log("in useeffect")
+    getCourses();
+  }, [isStudent]);
+
+  const getCourses = async () => {
     axios
       .post("http://localhost:8000/get-courses", {
        token: localStorage.token,
@@ -23,6 +25,8 @@ function CourseGrid() {
       })
       .then(function (response) {
         console.log(response);
+        SetCourses(response.data.courses);
+        return;
       })
       .catch(function (error) {
         console.log(error);
@@ -55,25 +59,30 @@ function CourseGrid() {
           </ul>
         </div>
       </section>
-      {isStudent ? (
-        <div></div>
-      ) : (
-        <section class="create-classes">
+      <div>
+      {isStudent? (<section>
+
+      </section>):(<section class="create-classes">
           <div></div>
           <div></div>
 
           <button class="btn" type="submit">
             Create a Class
           </button>
-        </section>
-      )}
+        </section>)}
+      {/* {isStudent ? (
+        <div></div>
+      ) : (
+        
+      )} */}
+      </div>
       <section class="courses-view">
         <div class="container">
           <div class="row">
             <>
-              {questions.map((data, id) => {
+              {courses.map((data, id) => {
                 return (
-                  <div class="col-sm-6 col-md-3">
+                  <div key={id} class="col-sm-6 col-md-3">
                     <div class="course-post">
                       <div class="img">
                         <img src="images/courses/courses-img4.jpg" alt="" />
@@ -84,10 +93,10 @@ function CourseGrid() {
                         </div>
                       </div>
                       <div class="info">
-                        <div class="name">{data.CourseName}</div>
+                        <div class="name">{data.name}</div>
                         <div class="expert">
                           <span>By </span>
-                          {data.CourseInstructor}
+                          {data.instructor}
                         </div>
                       </div>
                       <div class="product-footer">

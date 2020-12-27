@@ -9,10 +9,13 @@ const axios = require("axios");
 
 function Home() {
   const history = useHistory();
-  // const studentLogin = () => {
+  if(localStorage.token)
+  {
+    history.replace({pathname:'/courses', state:{"id": localStorage.uid, "isStudent": localStorage.isStudent}});
+  }
+
   const [login_username, setLogin_Username] = useState("username");
   const [login_password, setLogin_Password] = useState("password");
-
   const [register_username, setRegister_Username] = useState("username");
   const [register_password, setRegister_Password] = useState("password");
   const [register_email, setRegister_Email] = useState("email");

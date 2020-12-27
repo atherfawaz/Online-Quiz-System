@@ -2,10 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const CRED = require("./cred");
 const mongoose = require("mongoose");
-const User = require("./models/User");
 const joi = require("joi");
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
+
+// db models
+const User = require("./models/User");
+const Course = require("./models/Course");
+const MCQ = require("./models/MCQ");
+const Question = require("./models/Question");
+const QArr = require('./models/QArr');
 
 // necessary middleware
 var app = express();
@@ -88,9 +94,52 @@ app.post('/register', async (req, res) => {
     }
 });
 
-app.post('/get-courses', (req, res) => {
+app.post('/get-courses',async (req, res) => {
+    const schema = joi.object({
+        token: joi.string().required(),
+        uid: joi.string().required()
+    })
+    
+    const {error} = schema.validate(req.body);
+    if (error) return res.status(400).json({ "error": error.details[0].message });
 
-    res.status(200).json({ 'data': req.body });
+    try{
+        jwt.verify(req.body.token, "AdanAtherHadiKhizarPenYeawo");
+        const user = await User.findById(req.body.uid);
+        const courses = await Course.find({"_id":{
+            $in:user.classes
+        }});
+        res.status(200).json({ 'courses': courses});
+    }
+    catch(err){
+        console.log("error\n", err);
+        res.status(400).json({"error": err});
+        return;
+    }
+});
+
+app.post("/create-course", async (req, res) =>{
+   const course = new Course({
+       name: req.body.name,
+       instructor: req.body.instructor,
+       code:req.body.code,
+       semester:req.body.semester,
+       pool: new QArr(),
+       quiz: []
+   }); 
+
+   try{
+       const result = await course.save();
+       // insert couse id in teachers course list
+       const teacher = await User.findById(req.body.tuid);
+       teacher.classes.push(result.id);
+       const saved = await teacher.save();
+       res.status(200).json({"data":result});
+   }
+   catch(err){
+       console.log(err);
+       res.status(400).json({"error": err});
+   }
 });
 
 //server start notification

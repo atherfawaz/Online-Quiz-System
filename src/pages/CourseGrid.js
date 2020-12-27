@@ -7,10 +7,8 @@ const axios = require("axios");
 
 function CourseGrid() {
   const location = useLocation();
-  // const isStudent = location.state.type === 0 ? true : false;
-  const isStudent = true;
-  const userName = "hadi";
-  console.log(isStudent);
+  const isStudent = localStorage.isStudent;
+  
   const [questions, SetQuestions] = useState([
     { CourseName: "SE", CourseInstructor: "Bander", selected: false },
     { CourseName: "SE", CourseInstructor: "Bander", selected: false },
@@ -20,7 +18,8 @@ function CourseGrid() {
   const RenderCourses = () => {
     axios
       .post("http://localhost:8000/get-courses", {
-        username: userName,
+       token: localStorage.token,
+       uid: localStorage.uid
       })
       .then(function (response) {
         console.log(response);

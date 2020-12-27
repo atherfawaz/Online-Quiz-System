@@ -4,15 +4,12 @@ import "../App.css";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
+import { STATES } from "mongoose";
 const axios = require("axios");
 
 function Home() {
   const history = useHistory();
   // const studentLogin = () => {
-  //   history.push({pathname:'/courses', state:{type:0}});
-  // }
-  // const teachLogin = () => {
-  //   history.push({pathname:'/courses', state:{type:1}});
   const [login_username, setLogin_Username] = useState("username");
   const [login_password, setLogin_Password] = useState("password");
 
@@ -23,12 +20,22 @@ function Home() {
 
   const Login = () => {
     axios
-      .post("http://localhost:8000/login-authentication", {
+      .post("http://localhost:8000/login", {
         username: login_username,
         password: login_password,
       })
       .then(function (response) {
-        console.log(response);
+        console.log(response.data);
+        if (!response.data.token) {
+          alert("Retry login");
+          return;
+        }
+        localStorage.token = response.data.token;
+        localStorage.uid = response.data.uid;
+        localStorage.isStudent = response.data.type === 0 ? true : false;
+        //   history.push({pathname:'/courses', state:{type:0}});
+
+        history.replace({pathname:'/courses', state:{"id": localStorage.uid, "isStudent": localStorage.isStudent}});
       })
       .catch(function (error) {
         console.log(error);
@@ -37,7 +44,7 @@ function Home() {
 
   const Register = () => {
     axios
-      .post("http://localhost:8000/register-user", {
+      .post("http://localhost:8000/register", {
         name: register_username,
         password: register_password,
         email: register_email,

@@ -250,7 +250,6 @@ app.post("/add-question", async (req, res) => {
         console.log(err);
         res.status(400).json({ "error": err });
     }
-
 });
 
 //server start notification

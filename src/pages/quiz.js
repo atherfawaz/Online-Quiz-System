@@ -55,10 +55,6 @@ const Quiz = () => {
         </div>
       </section>
       <section class="breadcrumb white-bg">
-        <section>
-          <div class="time-info">Total time </div>
-        </section>
-        <div id="countdown_stop"></div>
         <div class="container">
           <ul>
             <li>
@@ -72,17 +68,6 @@ const Quiz = () => {
       </section>
       <section>
         <div className="container">
-          <div class="quiz-title">
-            <h2>General Quiz</h2>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="container mt-5">
           <Posts
             posts={currentPosts}
             loading={loading}

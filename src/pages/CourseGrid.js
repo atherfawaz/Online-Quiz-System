@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
-const axios = require('axios');
+const axios = require("axios");
 
 function CourseGrid() {
   const location = useLocation();
   // const isStudent = location.state.type === 0 ? true : false;
   const isStudent = true;
-  const userName= 'hadi';
+  const userName = "hadi";
   console.log(isStudent);
-  const [questions, SetQuestions] = useState([{ "CourseName": "SE", "CourseInstructor": "Bander", "selected":false},
-  { "CourseName": "SE", "CourseInstructor": "Bander", "selected": false},
-  { "CourseName": "SE", "CourseInstructor": "Bander", "selected": false }]);
-
+  const [questions, SetQuestions] = useState([
+    { CourseName: "SE", CourseInstructor: "Bander", selected: false },
+    { CourseName: "SE", CourseInstructor: "Bander", selected: false },
+    { CourseName: "SE", CourseInstructor: "Bander", selected: false },
+  ]);
 
   const RenderCourses = () => {
-    axios.post('http://localhost:8000/get-courses', {
-      username: userName
-    })
+    axios
+      .post("http://localhost:8000/get-courses", {
+        username: userName,
+      })
       .then(function (response) {
         console.log(response);
       })
@@ -54,14 +56,18 @@ function CourseGrid() {
           </ul>
         </div>
       </section>
-      { isStudent ? (<div></div>) : (<section class="create-classes">
+      {isStudent ? (
         <div></div>
-        <div></div>
+      ) : (
+        <section class="create-classes">
+          <div></div>
+          <div></div>
 
-        <button class='btn' type="submit">Create a Class</button>
-
-      </section>)
-      }
+          <button class="btn" type="submit">
+            Create a Class
+          </button>
+        </section>
+      )}
       <section class="courses-view">
         <div class="container">
           <div class="row">
@@ -81,27 +87,33 @@ function CourseGrid() {
                       <div class="info">
                         <div class="name">{data.CourseName}</div>
                         <div class="expert">
-                          <span>By </span>{data.CourseInstructor}
-                  </div>
+                          <span>By </span>
+                          {data.CourseInstructor}
+                        </div>
                       </div>
                       <div class="product-footer">
-                        <div class="comment-box">
-                        </div>
+                        <div class="comment-box"></div>
                         <div class="view-btn">
-                          {
-                            isStudent ? (<button type="submit" class="btn"> view more</button>) : (<button type='submit' class="btn"> view more</button>)
-                          }
+                          {isStudent ? (
+                            <button type="submit" class="btn">
+                              {" "}
+                              view more
+                            </button>
+                          ) : (
+                            <button type="submit" class="btn">
+                              {" "}
+                              view more
+                            </button>
+                          )}
                         </div>
-
                       </div>
                     </div>
                   </div>
-                )
+                );
               })}
-
             </>
+          </div>
         </div>
-      </div>
       </section>
     </div>
   );

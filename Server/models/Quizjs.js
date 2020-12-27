@@ -7,11 +7,14 @@ const QuizSchema = mongoose.Schema({
         required: true
     },
 
-    time: {
+    timer: {
         type: Number,
         required: true,
     },
-
+    start_time: {
+        type: Number,
+        required: true,
+    },
     questions: {
         type: QArr.schema,
         required: true,
@@ -31,6 +34,16 @@ const QuizSchema = mongoose.Schema({
     total_marks:{
     	type: Number,
         required: true,
+    }
+    ,
+    weightage: {
+        type: Number,
+        required: true,
+    },
+    instruction: {
+        type: String,
+        required: true,
+        default: ""
     }
 
 });

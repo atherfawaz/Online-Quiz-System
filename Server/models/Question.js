@@ -6,8 +6,12 @@ const LQSchema = mongoose.Schema({
         required: true,
     },
 
-    kewords: {
+    keywords: {
         type: Array,
+        required: true,
+    },
+    marks: {
+        type: Number,
         required: true,
     },
 

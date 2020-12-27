@@ -15,6 +15,11 @@ const MCQSchema = mongoose.Schema({
         type: Number,
         required: true,
     }
+    ,
+    marks: {
+        type: Number,
+        required: true,
+    }
 });
 
 module.exports = mongoose.model('MCQ', MCQSchema);

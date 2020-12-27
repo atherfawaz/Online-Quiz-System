@@ -1,18 +1,18 @@
-import React, { useState, useEffect} from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {useHistory} from "react-router-dom";
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
 const axios = require("axios");
 
 function CourseGrid() {
-  const location = useLocation();
+  const history = useHistory();
   const isStudent = localStorage.isStudent;
   console.log("isstudent? : ", isStudent);
-  
+
   const [courses, SetCourses] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("in useeffect")
     getCourses();
   }, [isStudent]);
@@ -20,8 +20,8 @@ function CourseGrid() {
   const getCourses = async () => {
     axios
       .post("http://localhost:8000/get-courses", {
-       token: localStorage.token,
-       uid: localStorage.uid
+        token: localStorage.token,
+        uid: localStorage.uid
       })
       .then(function (response) {
         console.log(response);
@@ -32,7 +32,22 @@ function CourseGrid() {
         console.log(error);
       });
   };
-
+  const renderButtons = () => {
+    if (isStudent===true) {
+      return (
+        <section class="create-classes">
+          <button class="btn" type="submit">Join a Class</button>
+        </section>);
+    }
+    else {
+      return (
+        <section class="create-classes">
+          <button class="btn" type="submit" onClick={()=>{
+            history.replace({pathname:"/createclass"});
+          }}>Create a Class</button>
+        </section>);
+    }
+  }
   return (
     <div class="wapper">
       <Loader />
@@ -60,21 +75,7 @@ function CourseGrid() {
         </div>
       </section>
       <div>
-      {isStudent? (<section>
-
-      </section>):(<section class="create-classes">
-          <div></div>
-          <div></div>
-
-          <button class="btn" type="submit">
-            Create a Class
-          </button>
-        </section>)}
-      {/* {isStudent ? (
-        <div></div>
-      ) : (
-        
-      )} */}
+       {renderButtons()}
       </div>
       <section class="courses-view">
         <div class="container">
@@ -108,11 +109,11 @@ function CourseGrid() {
                               view more
                             </button>
                           ) : (
-                            <button type="submit" class="btn">
-                              {" "}
+                              <button type="submit" class="btn">
+                                {" "}
                               view more
-                            </button>
-                          )}
+                              </button>
+                            )}
                         </div>
                       </div>
                     </div>

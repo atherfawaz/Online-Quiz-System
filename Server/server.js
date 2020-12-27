@@ -12,6 +12,8 @@ const Course = require("./models/Course");
 const MCQ = require("./models/MCQ");
 const Question = require("./models/Question");
 const QArr = require('./models/QArr');
+const FIB = require("./models/FIB");
+const CMatch = require("./models/CMatch");
 
 // necessary middleware
 var app = express();
@@ -133,7 +135,7 @@ app.post("/create-course", async (req, res) => {
     if (error) return res.status(400).json({ "error": error });
 
     try {
-        
+
         jwt.verify(req.body.token, CRED.SECRET)
         const teacher = await User.findById(req.body.tuid);
         const course = new Course({
@@ -154,6 +156,101 @@ app.post("/create-course", async (req, res) => {
         console.log(err);
         res.status(400).json({ "error": err });
     }
+});
+
+app.post("/get-questions", async (req, res) => {
+    const schema = joi.object({
+        token: joi.string().required,
+        cid: joi.string().req(),
+    });
+
+    const { error } = schema.validate(req.body);
+    if (error) return res.status(400).json({ "error": error });
+
+    try {
+        jwt.verify(req.body.token, CRED.SECRET);
+        const course = await Course.findById(req.body.cid);
+        res.status(200).json({
+            "MCQ": course.pool.MCQ,
+            "Short": course.pool.Short,
+            "Long": course.pool.Long,
+            "FIB": course.pool.FIB,
+            "CMatch": course.pool.CMatch
+        });
+    }
+    catch (err) {
+        console.log(err);
+        res.status(400).json({ "error": err });
+    }
+});
+
+app.post("/add-question", async (req, res) => {
+    const schema = joi.object({
+        token: joi.string().required(),
+        cid: joi.string().required(),
+        type: joi.string().min(3).max(8).required(),
+        question: joi.any().required()
+    });
+    const { error } = schema.validate(req.body);
+    if (error) return res.status(400).json({ "error": error });
+
+    try {
+        jwt.verify(req.body.token, CRED.SECRET);
+        const course = await Course.findById(req.body.cid);
+        switch (req.body.type) {
+            case "long":
+                const long = new Question({
+                    question: req.body.question.question,
+                    keywords: req.body.question.keywords,
+                    marks: req.body.question.marks
+                });
+                course.pool.Long.push(long);
+                break;
+            case "short":
+                const short = new Question({
+                    question: req.body.question.question,
+                    keywords: req.body.question.keywords,
+                    marks: req.body.question.marks
+                });
+                course.pool.Short.push(short);
+                break;
+            case "mcq":
+                const mcq = new MCQ({
+                    question: req.body.question.question,
+                    choices: req.body.question.choices,
+                    correct: req.body.question.correct,
+                    marks: req.body.question.marks,
+                });
+                course.pool.MCQ.push(mcq);
+                break;
+            case "fib":
+                const fib = new FIB({
+                    question: req.body.question.question,
+                    answer: req.body.question.answer,
+                    marks: req.body.question.marks
+                });
+                course.pool.Short.FIB.push(fib);
+                break;
+            case "cmatch":
+                const cmatch = new CMatch({
+                    statements: req.body.question.statements,
+                    answers: req.body.question.answers,
+                    correct: req.body.questions.correct,
+                    marks: req.body.question.marks
+                });
+                course.pool.Short.CMatch.push(cmatch);
+                break;
+            default:
+                break;
+        }
+        const result = await course.save();
+        res.status(200).json({"result": result});
+    }
+    catch (err) {
+        console.log(err);
+        res.status(400).json({ "error": err });
+    }
+
 });
 
 //server start notification

@@ -1,7 +1,14 @@
 import React from "react";
-import { Route, BrowserRouter as Router } from "react-router-dom";
 
 function NavBar() {
+  const logout = () =>{
+    if(localStorage.token){
+      delete localStorage.token;
+      delete localStorage.uid;
+      delete localStorage.isStudent;
+      console.log(localStorage.token);
+    }
+  }
   return (
     <div>
       <div class="quck-nav">
@@ -51,7 +58,7 @@ function NavBar() {
                     <a href="./quizintro">Quiz</a>
                   </li> */}
                   <li>
-                    <a href="./login">Login/Register</a>
+                    <a href="/" onClick={logout}>Logout</a>
                   </li>
                 </ul>
               </div>

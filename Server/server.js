@@ -2,9 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const CRED = require("./cred");
 const mongoose = require("mongoose");
-const User = require("./models/User");
 const joi = require("joi");
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+
+// db models
+const User = require("./models/User");
+const Course = require("./models/Course");
+const MCQ = require("./models/MCQ");
+const Question = require("./models/Question");
+const QArr = require('./models/QArr');
 
 // necessary middleware
 var app = express();
@@ -23,12 +30,35 @@ mongoose.connect(CRED.DB, { useNewUrlParser: true, useUnifiedTopology: true }, (
 });
 
 // endpoints
-app.post('/login-authentication', (req, response) => {
+app.post('/login',async (req, res) => {
+    console.log(req.body);
+    const schema = joi.object({
+        username: joi.string().min(6).max(100).required(),
+        password: joi.string().alphanum().min(6).required()
+    });
+    const {error} = schema.validate(req.body);
+    if (error) return res.status(400).json({ "error": error.details[0].message });
+    console.log("validated");
+    
+    const user = await User.findOne({name: req.body.username});
+    if (!user) return res.status(400).json({ "error": "invalid email" });
+    console.log("exists");
 
-    response.status(200).json({ 'msg': "successful" });
+    const valid_pass = await bcrypt.compare(req.body.password, user.password)
+    if(!valid_pass){
+        console.log(valid_pass, "\nincorrect password");
+        res.status(400).json({"error": "incorrect pasword"});
+        return;
+    }
+
+    const token = jwt.sign({id: user.id}, "AdanAtherHadiKhizarPenYeawo");
+
+    console.log("valid password");
+    console.log(user.id);
+    res.status(200).json({ 'msg': "successful", 'uid': user.id, "type":user.type, "token": token});
 });
 
-app.post('/register-user', async (req, res) => {
+app.post('/register', async (req, res) => {
     // perform field validaiton
     const schema = joi.object({
         name: joi.string().min(6).max(100).required(),
@@ -64,12 +94,52 @@ app.post('/register-user', async (req, res) => {
     }
 });
 
-app.post('/get-courses', (req, response) => {
-    console.log(req.body.username);
-    console.log(req.body.email);
-    console.log(req.body.password);
-    console.log(req.body.userType);
-    response.status(200).json({ 'msg': "successful" });
+app.post('/get-courses',async (req, res) => {
+    const schema = joi.object({
+        token: joi.string().required(),
+        uid: joi.string().required()
+    })
+    
+    const {error} = schema.validate(req.body);
+    if (error) return res.status(400).json({ "error": error.details[0].message });
+
+    try{
+        jwt.verify(req.body.token, "AdanAtherHadiKhizarPenYeawo");
+        const user = await User.findById(req.body.uid);
+        const courses = await Course.find({"_id":{
+            $in:user.classes
+        }});
+        res.status(200).json({ 'courses': courses});
+    }
+    catch(err){
+        console.log("error\n", err);
+        res.status(400).json({"error": err});
+        return;
+    }
+});
+
+app.post("/create-course", async (req, res) =>{
+   const course = new Course({
+       name: req.body.name,
+       instructor: req.body.instructor,
+       code:req.body.code,
+       semester:req.body.semester,
+       pool: new QArr(),
+       quiz: []
+   }); 
+
+   try{
+       const result = await course.save();
+       // insert couse id in teachers course list
+       const teacher = await User.findById(req.body.tuid);
+       teacher.classes.push(result.id);
+       const saved = await teacher.save();
+       res.status(200).json({"data":result});
+   }
+   catch(err){
+       console.log(err);
+       res.status(400).json({"error": err});
+   }
 });
 
 //server start notification

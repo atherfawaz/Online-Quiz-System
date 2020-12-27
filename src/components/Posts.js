@@ -1,27 +1,37 @@
 import React from "react";
+import "../App.css";
+import MCQ from "./mcq";
+import FIB from "./fib";
+import Cmatch from "./cmatch";
+import Long from "./long";
+import Short from "./short";
 
 const Posts = ({ loading, questions, posts }) => {
   const renderPost = () => {
-    console.log("Current post to be rendered: ", posts);
+    console.log(posts);
     if (posts == "question 1") {
-      return (
-        <div>
-          <h2>Question 1, H1</h2>
-        </div>
-      );
+      return <MCQ />;
+    } else if (posts == "question 2") {
+      return <FIB />;
+    } else if (posts == "question 3") {
+      return <Cmatch />;
+    } else if (posts == "question 4") {
+      return <Long />;
+    } else if (posts == "question 5") {
+      return <Short />;
     } else {
-      return (
-        <div>
-          <h2>Question 2, H2</h2>
-        </div>
-      );
+      console.log("Invalid type; check type in Posts.js");
     }
   };
 
   return (
-    <ul className="list-group mb-4">
-      <div>{renderPost()}</div>
-    </ul>
+    <div>
+      <div>
+        <div class="time-info">Total time </div>
+        <div id="countdown"></div>
+      </div>
+      {renderPost()}
+    </div>
   );
 };
 

@@ -34,33 +34,38 @@ const AddQuestions = () => {
   const sendQuestions = async () => {
     try {
       console.log("in send questions ", startingTime);
-      const mcqs = [questions.filter((e) => { return (e.type == "mcq" && e.selected).forEach(elem => elem.question._id) })];
-      console.log(mcqs);
-      // const fib = [questions.filter((e) => { return (e.type == "fib" && e.selected); })];
-      // const cmatch = [questions.filter((e) => { return (e.type == "cmatch" && e.selected); })];
-      // const short = [questions.filter((e) => { return (e.type == "short" && e.selected); })];
-      // const long = [questions.filter((e) => { return (e.type == "long" && e.selected); })];
+      let mcqs =[];
+      let fib = [];
+      let cmatch=[];
+      let short = [];
+      let long = [];
+      questions.filter((e) => { return (e.type == "mcq" && e.selected)}).forEach(elem => mcqs.push(elem.question._id));
+      questions.filter((e) => { return (e.type == "fib" && e.selected)}).forEach(elem => fib.push(elem.question._id));
+      questions.filter((e) => { return (e.type == "cmatch" && e.selected)}).forEach(elem => cmatch.push(elem.question._id));
+      questions.filter((e) => { return (e.type == "short" && e.selected)}).forEach(elem => short.push(elem.question._id));
+      questions.filter((e) => { return (e.type == "long" && e.selected)}).forEach(elem => long.push(elem.question._id));
 
 
-      // const res = await axios.post("http://localhost:8000/create-quiz", {
-      //   token: localStorage.token,
-      //   cid: cid,
-      //   qno: Number(quizNum),
-      //   mcqs: mcqs,
-      //   fib: fib,
-      //   cmatch: cmatch,
-      //   short: short,
-      //   long: long,
-      //   date: date,
-      //   start_time: startingTime,
-      //   timer: Number(timer),
-      //   total_marks: countMarks(),
-      //   weightage: Number(weightage),
-      //   instruction: additionalInstructions
-      // });
+      const res = await axios.post("http://localhost:8000/create-quiz", {
+        token: localStorage.token,
+        cid: cid,
+        qno: Number(quizNum),
+        mcqs: mcqs,
+        fib: fib,
+        cmatch: cmatch,
+        short: short,
+        long: long,
+        date: date,
+        start_time: startingTime,
+        timer: Number(timer),
+        total_marks: countMarks(),
+        weightage: Number(weightage),
+        instruction: additionalInstructions
+      });
 
-      // console.log(res);
-      // history.replace({ pathname: "./courseDetails", state: { cid: cid } });
+      console.log(res);
+      console.log("cid in send func: ", cid);
+      history.replace({ pathname: "./courseDetails", state: { cid: cid } });
     }
     catch (error) {
       if(error.response){
@@ -69,6 +74,7 @@ const AddQuestions = () => {
       if(error.requst){
         console.log(error.request);
       }
+      else console.log(error);
     }
   }
 

@@ -9,9 +9,11 @@ const axios = require("axios");
 
 function Home() {
   const history = useHistory();
-  if(localStorage.token)
-  {
-    history.replace({pathname:'/courses', state:{"id": localStorage.uid, "isStudent": localStorage.isStudent}});
+  if (localStorage.token) {
+    history.replace({
+      pathname: "/courses",
+      state: { id: localStorage.uid, isStudent: localStorage.isStudent },
+    });
   }
 
   const [login_username, setLogin_Username] = useState("username");
@@ -35,10 +37,13 @@ function Home() {
         }
         localStorage.token = response.data.token;
         localStorage.uid = response.data.uid;
-        localStorage.isStudent = response.data.type === 0 ? true : false;
+        localStorage.isStudent = response.data.type;
         //   history.push({pathname:'/courses', state:{type:0}});
 
-        history.replace({pathname:'/courses', state:{"id": localStorage.uid, "isStudent": localStorage.isStudent}});
+        history.replace({
+          pathname: "/courses",
+          state: { id: localStorage.uid, isStudent: localStorage.isStudent },
+        });
       })
       .catch(function (error) {
         console.log(error);

@@ -1,14 +1,23 @@
-import { React, useState } from "react";
+import axios from "axios";
+import { React, useEffect, useState } from "react";
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
+const axios = require("axios");
 
-function AddQuestions() {
-  const [questions, SetQuestions] = useState([
-    { statement: "question 1", type: "short", marks: 2, selected: false },
-    { statement: "question 2", type: "mcq", marks: 1, selected: false },
-    { statement: "question 3", type: "long", marks: 4, selected: false },
-  ]);
+const AddQuestions = () => {
+  const location = useLocation();
+
+  const [questions, setQuestions] = useState([]);
+  const [cid, setCid] = useState("");
+  const [quizNum, setQuizNum] = useState("quizNum");
+  const [weightage, setWeightage] = useState("weightage");
+  const [startingTime, setStartingTime] = useState("startingtime");
+  const [timer, setTimer] = useState("timer");
+  const [date, setDate] = useState("date");
+  const [additionalInstructions, setAdditionalInstructions] = useState(
+    "additionalinstructions"
+  );
 
   const handleSelected = (index) => {
     SetQuestions(
@@ -19,6 +28,33 @@ function AddQuestions() {
         return item;
       })
     );
+  };
+
+  const getQuestions = async () => {
+    try {
+      const res = await axios.post("http://locahost:8000/get-questions", {
+        token: localStorage.token,
+        cid: cid,
+      });
+      setQuestions(res.data.questions);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    setCid(location.state.cid);
+    getQuestions();
+    setDate(location.state.date);
+    setWeightage(location.state.weightage);
+    setQuizNum(location.state.quizNum);
+    setStartingTime(location.state.startingTime);
+    setTimer(location.state.timer);
+    setAdditionalInstructions(location.state.additionalInstructions);
+  }, []);
+
+  const printFunc = () => {
+    console.log("Here");
   };
 
   const countSelected = () => {
@@ -47,6 +83,29 @@ function AddQuestions() {
     <div className="wapper">
       <Loader />
       <NavBar />
+      <section class="contact-detail">
+        <div class="container">
+          <div class="section-title">
+            <h2>Questions</h2>
+            <p>
+              Please choose questions from the question pool linked to the class
+            </p>
+          </div>
+          <div class="contact-boxView">
+            <div class="row">
+              <div>
+                <div class="contact-box yello">
+                  <div class="icon-box">
+                    <i class="fa fa-list-ul"></i>
+                  </div>
+                  <h4>Add questions</h4>
+                  <a href="/addquestions">Choose from Pool</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <div>
         <section class="cart-page">
           <div class="container">
@@ -112,14 +171,27 @@ function AddQuestions() {
                       <td>{countMarks()}</td>
                     </tr>
                   </tbody>
+                  <div>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        printFunc();
+                      }}
+                    >
+                      Add selected question(s)
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        printFunc();
+                      }}
+                    >
+                      Generate random question(s)
+                    </button>
+                  </div>
                 </table>
-              </div>
-            </div>
-            <div class="cart-row">
-              <div class="check-outBtn">
-                <a href="check-out.html" class="btn">
-                  Add Selected Question
-                </a>
               </div>
             </div>
           </div>
@@ -127,6 +199,6 @@ function AddQuestions() {
       </div>
     </div>
   );
-}
+};
 
 export default AddQuestions;

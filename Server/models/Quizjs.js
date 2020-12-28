@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const QArr = require('./QArr');
 
 const QuizSchema = mongoose.Schema({
+    qno: {
+        type: Number,
+        require: true
+    },
+    
     date: {
         type: mongoose.Schema.Types.Date,
         required: true

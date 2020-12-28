@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
@@ -13,15 +13,18 @@ function CourseGrid() {
   const [courses, SetCourses] = useState([]);
 
   useEffect(() => {
-    console.log("in useeffect")
     getCourses();
   }, [isStudent]);
+
+  const forwardClass = (arg) => {
+    history.replace({ pathname: "./courseDetails", state: { cid: arg._id } });
+  };
 
   const getCourses = async () => {
     axios
       .post("http://localhost:8000/get-courses", {
         token: localStorage.token,
-        uid: localStorage.uid
+        uid: localStorage.uid,
       })
       .then(function (response) {
         console.log(response);
@@ -33,22 +36,31 @@ function CourseGrid() {
       });
   };
   const renderButtons = (test) => {
-    if (test===true) {
+    if (test === true) {
       console.log("is student is true");
       return (
         <section class="create-classes">
-          <button class="btn" type="submit">Join a Class</button>
-        </section>);
-    }
-    else {
+          <button class="btn" type="submit">
+            Join a Class
+          </button>
+        </section>
+      );
+    } else {
       return (
         <section class="create-classes">
-          <button class="btn" type="submit" onClick={()=>{
-            history.replace({pathname:"/createclass"});
-          }}>Create a Class</button>
-        </section>);
+          <button
+            class="btn"
+            type="submit"
+            onClick={() => {
+              history.replace({ pathname: "/createclass" });
+            }}
+          >
+            Create a Class
+          </button>
+        </section>
+      );
     }
-  }
+  };
   return (
     <div class="wapper">
       <Loader />
@@ -75,9 +87,7 @@ function CourseGrid() {
           </ul>
         </div>
       </section>
-      <div>
-       {renderButtons(isStudent)}
-      </div>
+      <div>{renderButtons(isStudent)}</div>
       <section class="courses-view">
         <div class="container">
           <div class="row">
@@ -104,17 +114,14 @@ function CourseGrid() {
                       <div class="product-footer">
                         <div class="comment-box"></div>
                         <div class="view-btn">
-                          {isStudent ? (
-                            <button type="submit" class="btn">
-                              {" "}
-                              view more
-                            </button>
-                          ) : (
-                              <button type="submit" class="btn">
-                                {" "}
-                              view more
-                              </button>
-                            )}
+                          <button
+                            onClick={() => {
+                              forwardClass(data);
+                            }}
+                            class="btn"
+                          >
+                            view more
+                          </button>
                         </div>
                       </div>
                     </div>

@@ -1,13 +1,25 @@
-import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, Link, useHistory } from "react-router-dom";
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
 
-function CourseDetails() {
+const CourseDetails = () => {
+  const [cid, setCID] = useState("");
+  const history = useHistory();
   const location = useLocation();
-  const isStudent = location.state.type === 0 ? true : false;
+  
+  useEffect(() => {
+    setCID(location.state.cid);
+  }, [location]);
 
+  const forwardQuiz = () => {
+    history.replace({pathname="./createQuiz", state: {cid: cid}});
+  }
+
+  const isStudent = localStorage.isStudent;
+  console.log(location);
+  console.log("CID: ", cid);
   console.log(isStudent);
   return (
     <div className="wapper">
@@ -143,16 +155,9 @@ function CourseDetails() {
                       </button>
                     </Link>
                   ) : (
-                    <Link
-                      to={{
-                        pathname: "/createquiz",
-                        state: { type: location.state.type },
-                      }}
-                    >
-                      <button type="submit" class="btn">
-                        Create Quiz
-                      </button>
-                    </Link>
+                    <button onClick={forwardQuiz} class="btn">
+                      Create Quiz
+                    </button>
                   )}
                 </div>
               </div>
@@ -547,6 +552,6 @@ function CourseDetails() {
       </div>
     </div>
   );
-}
+};
 
 export default CourseDetails;

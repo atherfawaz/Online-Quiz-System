@@ -37,7 +37,7 @@ function Home() {
         }
         localStorage.token = response.data.token;
         localStorage.uid = response.data.uid;
-        localStorage.isStudent = response.data.type;
+        localStorage.isStudent = response.data.type===1?1:0;
         //   history.push({pathname:'/courses', state:{type:0}});
 
         history.replace({

@@ -1,5 +1,5 @@
-import axios from "axios";
 import { React, useEffect, useState } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
@@ -7,12 +7,13 @@ const axios = require("axios");
 
 const AddQuestions = () => {
   const location = useLocation();
+  const history = useHistory();
 
   const [questions, setQuestions] = useState([]);
   const [cid, setCid] = useState("");
   const [quizNum, setQuizNum] = useState("quizNum");
   const [weightage, setWeightage] = useState("weightage");
-  const [startingTime, setStartingTime] = useState("startingtime");
+  const [startingTime, setStartingTime] = useState("12");
   const [timer, setTimer] = useState("timer");
   const [date, setDate] = useState("date");
   const [additionalInstructions, setAdditionalInstructions] = useState(
@@ -20,7 +21,7 @@ const AddQuestions = () => {
   );
 
   const handleSelected = (index) => {
-    SetQuestions(
+    setQuestions(
       questions.map((item, id) => {
         if (index === id) {
           return { ...item, selected: !item.selected };
@@ -30,32 +31,83 @@ const AddQuestions = () => {
     );
   };
 
+  const sendQuestions = async () => {
+    try {
+      console.log("in send questions ", startingTime);
+      const mcqs = [questions.filter((e) => { return (e.type == "mcq" && e.selected).forEach(elem => elem.question._id) })];
+      console.log(mcqs);
+      // const fib = [questions.filter((e) => { return (e.type == "fib" && e.selected); })];
+      // const cmatch = [questions.filter((e) => { return (e.type == "cmatch" && e.selected); })];
+      // const short = [questions.filter((e) => { return (e.type == "short" && e.selected); })];
+      // const long = [questions.filter((e) => { return (e.type == "long" && e.selected); })];
+
+
+      // const res = await axios.post("http://localhost:8000/create-quiz", {
+      //   token: localStorage.token,
+      //   cid: cid,
+      //   qno: Number(quizNum),
+      //   mcqs: mcqs,
+      //   fib: fib,
+      //   cmatch: cmatch,
+      //   short: short,
+      //   long: long,
+      //   date: date,
+      //   start_time: startingTime,
+      //   timer: Number(timer),
+      //   total_marks: countMarks(),
+      //   weightage: Number(weightage),
+      //   instruction: additionalInstructions
+      // });
+
+      // console.log(res);
+      // history.replace({ pathname: "./courseDetails", state: { cid: cid } });
+    }
+    catch (error) {
+      if(error.response){
+        console.log(error.response);
+      }
+      if(error.requst){
+        console.log(error.request);
+      }
+    }
+  }
+
   const getQuestions = async () => {
     try {
-      const res = await axios.post("http://locahost:8000/get-questions", {
+      console.log("token: ", localStorage.token)
+      console.log("cid:", location.state.cid);
+      const res = await axios.post("http://localhost:8000/get-questions", {
         token: localStorage.token,
-        cid: cid,
+        cid: location.state.cid,
       });
-      setQuestions(res.data.questions);
+
+      var AllQuestions = [];
+      res.data.MCQ.forEach(element => AllQuestions.push({ "type": "mcq", "question": element, "selected": false }));
+      res.data.Short.forEach(element => AllQuestions.push({ "type": "short", "question": element, "selected": false }));
+      res.data.Long.forEach(element => AllQuestions.push({ "type": "long", "question": element, "selected": false }));
+      res.data.FIB.forEach(element => AllQuestions.push({ "type": "fib", "question": element, "selected": false }));
+      res.data.CMatch.forEach(element => AllQuestions.push({ "type": "cmatch", "question": element, "selected": false }));
+
+      setQuestions(AllQuestions);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
+    console.log("cid: ", location.state.cid);
     setCid(location.state.cid);
     getQuestions();
     setDate(location.state.date);
     setWeightage(location.state.weightage);
     setQuizNum(location.state.quizNum);
     setStartingTime(location.state.startingTime);
+    console.log("incoming starting time: ", location.state.startingTime);
+    console.log("set starting time: ", startingTime);
     setTimer(location.state.timer);
     setAdditionalInstructions(location.state.additionalInstructions);
-  }, []);
+  }, [location]);
 
-  const printFunc = () => {
-    console.log("Here");
-  };
 
   const countSelected = () => {
     let count = 0;
@@ -72,7 +124,7 @@ const AddQuestions = () => {
     let count = 0;
     questions.forEach((Element) => {
       if (Element.selected) {
-        count += Element.marks;
+        count += Element.question.marks;
       }
     });
 
@@ -91,19 +143,7 @@ const AddQuestions = () => {
               Please choose questions from the question pool linked to the class
             </p>
           </div>
-          <div class="contact-boxView">
-            <div class="row">
-              <div>
-                <div class="contact-box yello">
-                  <div class="icon-box">
-                    <i class="fa fa-list-ul"></i>
-                  </div>
-                  <h4>Add questions</h4>
-                  <a href="/addquestions">Choose from Pool</a>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </section>
       <div>
@@ -127,7 +167,7 @@ const AddQuestions = () => {
                           <tr key={id}>
                             <td>
                               <div class="product-details">
-                                <div class="name">{data.statement}</div>
+                                <div class="name">{data.question.question}</div>
                               </div>
                             </td>
                             <td>
@@ -137,7 +177,7 @@ const AddQuestions = () => {
                             </td>
                             <td>
                               <div class="product-details">
-                                <div class="name">{data.marks}</div>
+                                <div class="name">{data.question.marks}</div>
                               </div>
                             </td>
                             <td>
@@ -175,7 +215,7 @@ const AddQuestions = () => {
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        printFunc();
+                        sendQuestions();
                       }}
                     >
                       Add selected question(s)
@@ -185,7 +225,6 @@ const AddQuestions = () => {
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        printFunc();
                       }}
                     >
                       Generate random question(s)

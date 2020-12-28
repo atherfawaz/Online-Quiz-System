@@ -14,10 +14,10 @@ const CourseDetails = () => {
   }, [location]);
 
   const forwardQuiz = () => {
-    history.replace({pathname="./createQuiz", state: {cid: cid}});
+    history.replace({pathname:"./createQuiz", state: {cid: cid}});
   }
 
-  const isStudent = localStorage.isStudent;
+  const isStudent = localStorage.isStudent===1?true:false;
   console.log(location);
   console.log("CID: ", cid);
   console.log(isStudent);

@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const CMatchSchema = mongoose.Schema({
+    question: {
+        type: String,
+        required: true
+    },
+    
     statements: {
         type: Array,
         required: true,

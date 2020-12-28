@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import "../App.css";
 import Loader from "../components/Loader";
 import NavBar from "../components/NavBar";
 
 const CreateQuiz = () => {
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     setCid(location.state.cid);
@@ -28,7 +29,7 @@ const CreateQuiz = () => {
         cid: cid,
         quizNum: quizNum,
         weightage: weightage,
-        startingtime: startingTime,
+        startingTime: startingTime,
         timer: timer,
         date: date,
         additionalInstructions: additionalInstructions,
@@ -68,7 +69,7 @@ const CreateQuiz = () => {
             <h2>Quiz Settings</h2>
           </div>
           <div class="form-filde">
-            <form onSubmit={addQuestions()}>
+            <form onSubmit={addQuestions}>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="input-box">
@@ -87,7 +88,7 @@ const CreateQuiz = () => {
                       type="number"
                       placeholder="Weightage"
                       data-validation="required"
-                      name="time"
+                      name="weightage"
                       onChange={(e) => {
                         setWeightage(e.target.value);
                       }}
@@ -109,7 +110,7 @@ const CreateQuiz = () => {
                       type="number"
                       placeholder="Time Required / Duration"
                       data-validation="required"
-                      name="time"
+                      name="duration"
                       onChange={(e) => {
                         setTimer(e.target.value);
                       }}

@@ -258,6 +258,7 @@ app.post("/create-quiz", async (req, res) => {
     const schema = joi.object({
         token: joi.string().required(),
         cid: joi.string().required(),
+        qno: joi.number().integer().min(9).required(),
         mcqs: joi.array().required(),
         fib: joi.array().required(),
         cmatch: joi.array().required(),

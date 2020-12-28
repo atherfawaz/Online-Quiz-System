@@ -21,11 +21,6 @@ const QuizSchema = mongoose.Schema({
         default: new QArr()
     },
 
-    stat_id:{
-    	type: mongoose.Schema.Types.ObjectId,
-        required: true,
-    },
-
     course_id:{
     	type: mongoose.Schema.Types.ObjectId,
         required: true,

@@ -12,6 +12,14 @@ const ArrSchema = mongoose.Schema({
     Short: {
         type: [],
         default: []
+    },
+    FIB: {
+        type: [],
+        default: []
+    },
+    CMatch:{
+        type: [],
+        default: []
     }
 });
 

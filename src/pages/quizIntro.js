@@ -45,11 +45,11 @@ function QuizIntro() {
                 <div class="time-info">Total time </div>
                 <div id="countdown_stop"></div>
                 <div class="qustion-list">
-                  <div class="qustion-slide fill">
+                  <div class="qustion-slide">
                     <div class="qustion-number">Question 1</div>
                     <span>2</span>
                   </div>
-                  <div class="qustion-slide active">
+                  <div class="qustion-slide">
                     <div class="qustion-number">Question 2</div>
                     <span>2</span>
                   </div>
@@ -90,14 +90,10 @@ function QuizIntro() {
               <div class="col-sm-8 col-md-9">
                 <div class="quiz-intro">
                   <h3>Introduction</h3>
+                  <p>Here we will add quiz details from DB </p>
                   <p>
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout. The point of using Lorem Ipsum is that it has a
-                    more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. Many desktop publishing packages and web
-                    page editors now use Lorem Ipsum as their{" "}
+                    o Start Time o End Time o Duration o Marks o Weightage o
+                    Instructions o Number of questions o Number of pages
                   </p>
                   <div class="start-btn">
                     <a href="/quiz" class="btn">

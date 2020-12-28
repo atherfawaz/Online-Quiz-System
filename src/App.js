@@ -16,6 +16,7 @@ import createQuiz from "./pages/createQuiz";
 import AddQuestions from "./pages/addQuestions";
 import ViewQuizHistory from "./pages/viewquizhistory";
 import CreatePool from "./pages/createpool";
+import QuestionToPool from "./pages/addQuestionToPool";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/viewquizhistory" exact component={ViewQuizHistory}></Route>
         <Route path="/coursedetails" exact component={CourseDetails}></Route>
         <Route path="/createpool" exact component={CreatePool}></Route>
+        <Route path="/questiontopool" exact component={QuestionToPool}></Route>
       </div>
     </Router>
   );

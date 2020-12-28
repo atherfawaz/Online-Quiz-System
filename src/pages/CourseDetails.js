@@ -108,12 +108,12 @@ const CourseDetails = () => {
                     ) : (
                       <Link
                         to={{
-                          pathname: "/createpool",
+                          pathname: "/questiontopool",
                           state: { type: location.state.type },
                         }}
                       >
                         <button type="submit" class="btn">
-                          Edit Pool
+                          Create Pool
                         </button>
                       </Link>
                     )}

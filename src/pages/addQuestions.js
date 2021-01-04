@@ -34,17 +34,36 @@ const AddQuestions = () => {
   const sendQuestions = async () => {
     try {
       console.log("in send questions ", startingTime);
-      let mcqs =[];
+      let mcqs = [];
       let fib = [];
-      let cmatch=[];
+      let cmatch = [];
       let short = [];
       let long = [];
-      questions.filter((e) => { return (e.type == "mcq" && e.selected)}).forEach(elem => mcqs.push(elem.question._id));
-      questions.filter((e) => { return (e.type == "fib" && e.selected)}).forEach(elem => fib.push(elem.question._id));
-      questions.filter((e) => { return (e.type == "cmatch" && e.selected)}).forEach(elem => cmatch.push(elem.question._id));
-      questions.filter((e) => { return (e.type == "short" && e.selected)}).forEach(elem => short.push(elem.question._id));
-      questions.filter((e) => { return (e.type == "long" && e.selected)}).forEach(elem => long.push(elem.question._id));
-
+      questions
+        .filter((e) => {
+          return e.type == "mcq" && e.selected;
+        })
+        .forEach((elem) => mcqs.push(elem.question._id));
+      questions
+        .filter((e) => {
+          return e.type == "fib" && e.selected;
+        })
+        .forEach((elem) => fib.push(elem.question._id));
+      questions
+        .filter((e) => {
+          return e.type == "cmatch" && e.selected;
+        })
+        .forEach((elem) => cmatch.push(elem.question._id));
+      questions
+        .filter((e) => {
+          return e.type == "short" && e.selected;
+        })
+        .forEach((elem) => short.push(elem.question._id));
+      questions
+        .filter((e) => {
+          return e.type == "long" && e.selected;
+        })
+        .forEach((elem) => long.push(elem.question._id));
 
       const res = await axios.post("http://localhost:8000/create-quiz", {
         token: localStorage.token,
@@ -60,27 +79,25 @@ const AddQuestions = () => {
         timer: Number(timer),
         total_marks: countMarks(),
         weightage: Number(weightage),
-        instruction: additionalInstructions
+        instruction: additionalInstructions,
       });
 
       console.log(res);
       console.log("cid in send func: ", cid);
       history.replace({ pathname: "./courseDetails", state: { cid: cid } });
-    }
-    catch (error) {
-      if(error.response){
+    } catch (error) {
+      if (error.response) {
         console.log(error.response);
       }
-      if(error.requst){
+      if (error.requst) {
         console.log(error.request);
-      }
-      else console.log(error);
+      } else console.log(error);
     }
-  }
+  };
 
   const getQuestions = async () => {
     try {
-      console.log("token: ", localStorage.token)
+      console.log("token: ", localStorage.token);
       console.log("cid:", location.state.cid);
       const res = await axios.post("http://localhost:8000/get-questions", {
         token: localStorage.token,
@@ -88,11 +105,25 @@ const AddQuestions = () => {
       });
 
       var AllQuestions = [];
-      res.data.MCQ.forEach(element => AllQuestions.push({ "type": "mcq", "question": element, "selected": false }));
-      res.data.Short.forEach(element => AllQuestions.push({ "type": "short", "question": element, "selected": false }));
-      res.data.Long.forEach(element => AllQuestions.push({ "type": "long", "question": element, "selected": false }));
-      res.data.FIB.forEach(element => AllQuestions.push({ "type": "fib", "question": element, "selected": false }));
-      res.data.CMatch.forEach(element => AllQuestions.push({ "type": "cmatch", "question": element, "selected": false }));
+      res.data.MCQ.forEach((element) =>
+        AllQuestions.push({ type: "mcq", question: element, selected: false })
+      );
+      res.data.Short.forEach((element) =>
+        AllQuestions.push({ type: "short", question: element, selected: false })
+      );
+      res.data.Long.forEach((element) =>
+        AllQuestions.push({ type: "long", question: element, selected: false })
+      );
+      res.data.FIB.forEach((element) =>
+        AllQuestions.push({ type: "fib", question: element, selected: false })
+      );
+      res.data.CMatch.forEach((element) =>
+        AllQuestions.push({
+          type: "cmatch",
+          question: element,
+          selected: false,
+        })
+      );
 
       setQuestions(AllQuestions);
     } catch (error) {
@@ -113,7 +144,6 @@ const AddQuestions = () => {
     setTimer(location.state.timer);
     setAdditionalInstructions(location.state.additionalInstructions);
   }, [location]);
-
 
   const countSelected = () => {
     let count = 0;
@@ -149,7 +179,6 @@ const AddQuestions = () => {
               Please choose questions from the question pool linked to the class
             </p>
           </div>
-
         </div>
       </section>
       <div>

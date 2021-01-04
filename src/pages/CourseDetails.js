@@ -8,16 +8,16 @@ const CourseDetails = () => {
   const [cid, setCID] = useState("");
   const history = useHistory();
   const location = useLocation();
-  
+
   useEffect(() => {
     setCID(location.state.cid);
   }, [location]);
 
   const forwardQuiz = () => {
-    history.replace({pathname:"./createQuiz", state: {cid: cid}});
-  }
+    history.replace({ pathname: "./createQuiz", state: { cid: cid } });
+  };
 
-  const isStudent = localStorage.isStudent===1?true:false;
+  const isStudent = localStorage.isStudent === 1 ? true : false;
   console.log(location);
   console.log("CID: ", cid);
   console.log(isStudent);

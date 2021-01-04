@@ -20,21 +20,21 @@ function CreateClass() {
           tuid: localStorage.uid,
           name: name,
           code: code,
-          semester: Number(semester)
+          semester: Number(semester),
         });
         console.log(res);
         console.log("added course");
-        history.replace({ pathname: '/courses', state: { "id": localStorage.uid, "isStudent": localStorage.isStudent } });
+        history.replace({
+          pathname: "/courses",
+          state: { id: localStorage.uid, isStudent: localStorage.isStudent },
+        });
+      } else {
+        console.log("Stll here");
       }
-      else {
-        console.log("Stll here")
-      }
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
     }
   };
-
 
   return (
     <div className="wapper">
@@ -88,7 +88,7 @@ function CreateClass() {
                       placeholder={code}
                       data-validation="required"
                       name="email"
-                      onChange={e => setCode(e.target.value)}
+                      onChange={(e) => setCode(e.target.value)}
                     />
                   </div>
                   <div class="input-box">
@@ -97,7 +97,7 @@ function CreateClass() {
                       placeholder={semester}
                       data-validation="required"
                       name="subject"
-                      onChange={e => setSemester(e.target.value)}
+                      onChange={(e) => setSemester(e.target.value)}
                     />
                   </div>
                 </div>

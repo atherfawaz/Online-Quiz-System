@@ -1,25 +1,24 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const MCQSchema = mongoose.Schema({
-    question: {
-        type: String,
-        required: true,
-    },
+  question: {
+    type: String,
+    required: true,
+  },
 
-    choices: {
-        type: Array,
-        required: true,
-    },
+  choices: {
+    type: Array,
+    required: true,
+  },
 
-    correct: {
-        type: Number,
-        required: true,
-    }
-    ,
-    marks: {
-        type: Number,
-        required: true,
-    }
+  correct: {
+    type: Number,
+    required: true,
+  },
+  marks: {
+    type: Number,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model('MCQ', MCQSchema);
+module.exports = mongoose.model("MCQ", MCQSchema);

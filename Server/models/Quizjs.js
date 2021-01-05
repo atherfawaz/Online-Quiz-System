@@ -1,51 +1,49 @@
-const mongoose = require('mongoose');
-const QArr = require('./QArr');
+const mongoose = require("mongoose");
+const QArr = require("./QArr");
 
 const QuizSchema = mongoose.Schema({
-    qno: {
-        type: Number,
-        require: true
-    },
-    
-    date: {
-        type: mongoose.Schema.Types.Date,
-        required: true
-    },
+  qno: {
+    type: Number,
+    require: true,
+  },
 
-    timer: {
-        type: Number,
-        required: true,
-    },
-    start_time: {
-        type: String,
-        required: true,
-    },
-    questions: {
-        type: QArr.schema,
-        required: true,
-        default: new QArr()
-    },
+  date: {
+    type: mongoose.Schema.Types.Date,
+    required: true,
+  },
 
-    course_id:{
-    	type: mongoose.Schema.Types.ObjectId,
-        required: true,
-    },
+  timer: {
+    type: Number,
+    required: true,
+  },
+  start_time: {
+    type: String,
+    required: true,
+  },
+  questions: {
+    type: QArr.schema,
+    required: true,
+    default: new QArr(),
+  },
 
-    total_marks:{
-    	type: Number,
-        required: true,
-    }
-    ,
-    weightage: {
-        type: Number,
-        required: true,
-    },
-    instruction: {
-        type: String,
-        required: true,
-        default: ""
-    }
+  course_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
 
+  total_marks: {
+    type: Number,
+    required: true,
+  },
+  weightage: {
+    type: Number,
+    required: true,
+  },
+  instruction: {
+    type: String,
+    required: true,
+    default: "",
+  },
 });
 
-module.exports = mongoose.model('Quiz', QuizSchema);
+module.exports = mongoose.model("Quiz", QuizSchema);

@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../App.css";
 import TextField from "@material-ui/core/TextField";
 
 const NewCmatch = () => {
+  const [question, setQuestion] = useState("");
+  const [marks, setMarks] = useState("");
+  const [s1, sets1] = useState("");
+  const [s2, sets2] = useState("");
+  const [s3, sets3] = useState("");
+  const [s4, sets4] = useState("");
+  const [s5, sets5] = useState("");
+  const [s6, sets6] = useState("");
+  const [s7, sets7] = useState("");
+  const [s8, sets8] = useState("");
+  const [s9, sets9] = useState("");
+  const [s10, sets10] = useState("");
+  const [a1, seta1] = useState("");
+  const [a2, seta2] = useState("");
+  const [a3, seta3] = useState("");
+  const [a4, seta4] = useState("");
+  const [a5, seta5] = useState("");
+  const [a6, seta6] = useState("");
+  const [a7, seta7] = useState("");
+  const [a8, seta8] = useState("");
+  const [a9, seta9] = useState("");
+  const [a10, seta10] = useState("");
+
   const useStyles = makeStyles((theme) => ({
     root: {
       "& > *": {
@@ -13,14 +36,76 @@ const NewCmatch = () => {
     },
   }));
 
-  const testFunc = (e) => {
-    console.log("e: ", e.target.value);
+  const makeAxiosCall = () => {
+    console.log(
+      "Variables set. Placeholder function for axios call. Just send variables from inside this function."
+    );
+  };
+
+  const handleClick = () => {
+    setQuestion(document.getElementById("question").value);
+    sets1(document.getElementById("s1").value);
+    sets2(document.getElementById("s2").value);
+    sets3(document.getElementById("s3").value);
+    sets4(document.getElementById("s4").value);
+    sets5(document.getElementById("s5").value);
+    sets6(document.getElementById("s6").value);
+    sets7(document.getElementById("s7").value);
+    sets8(document.getElementById("s8").value);
+    sets9(document.getElementById("s9").value);
+    sets10(document.getElementById("s10").value);
+    sets10(document.getElementById("s10").value);
+
+    seta1(document.getElementById("a1").value);
+    seta2(document.getElementById("a2").value);
+    seta3(document.getElementById("a3").value);
+    seta4(document.getElementById("a4").value);
+    seta5(document.getElementById("a5").value);
+    seta6(document.getElementById("a6").value);
+    seta7(document.getElementById("a7").value);
+    seta8(document.getElementById("a8").value);
+    seta9(document.getElementById("a9").value);
+    seta10(document.getElementById("a10").value);
+
+    setMarks(document.getElementById("marks").value);
+    if (
+      question == "" ||
+      a1 == "" ||
+      a2 == "" ||
+      a3 == "" ||
+      a4 == "" ||
+      a5 == "" ||
+      a6 == "" ||
+      a7 == "" ||
+      a8 == "" ||
+      a9 == "" ||
+      a10 == "" ||
+      s1 == "" ||
+      s2 == "" ||
+      s3 == "" ||
+      s4 == "" ||
+      s5 == "" ||
+      s6 == "" ||
+      s7 == "" ||
+      s8 == "" ||
+      s9 == "" ||
+      s10 == "" ||
+      marks == ""
+    ) {
+      alert("Empty forms, enter values. Otherwise, retry.");
+      return;
+    }
+    makeAxiosCall();
   };
 
   const classes = useStyles();
   return (
     <form>
-      <TextField id="s1" label="Match the Columns" variant="filled" />
+      <TextField
+        id="question"
+        label="Statement (Ex: Match the columns)"
+        variant="filled"
+      />
       <br></br>
       <br></br>
       <TextField id="s1" label="First Statement" variant="outlined" />
@@ -69,7 +154,7 @@ const NewCmatch = () => {
       <br></br>
       <div className="col-sm-12">
         <div className="submit-box">
-          <input value="Add Question" className="btn" onClick={testFunc} />
+          <input value="Add Question" className="btn" onClick={handleClick} />
         </div>
       </div>
     </form>

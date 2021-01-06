@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../App.css";
 import TextField from "@material-ui/core/TextField";
+import axios from 'axios';
 
-const NewFIB = () => {
+const NewFIB = ({ classID }) => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [marks, setMarks] = useState("");
-
+  console.log("CID in FIB: ", classID);
   const useStyles = makeStyles((theme) => ({
     root: {
       "& > *": {
@@ -17,10 +18,33 @@ const NewFIB = () => {
     },
   }));
 
-  const makeAxiosCall = () => {
+  const makeAxiosCall = async () => {
     console.log(
       "Variables set. Placeholder function for axios call. Just send variables from inside this function."
     );
+    console.log("question: ", question)
+    console.log("answer: ", answer)
+    console.log("marks: ", marks)
+    try {
+      const res = await axios
+        .post("http://localhost:8000/add-question", {
+          token: localStorage.token,
+          cid: classID,
+          type: "fib",
+          question: { "question":question, 
+          "answer":answer,
+          "marks": marks 
+        }
+        });
+        console.log(res);
+        setQuestion('');
+        setAnswer('');
+        setMarks('');
+    }
+    catch (e) {
+      console.log(e);
+    }
+
   };
 
   const handleClick = () => {

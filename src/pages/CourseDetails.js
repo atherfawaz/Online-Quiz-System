@@ -109,7 +109,7 @@ const CourseDetails = () => {
                       <Link
                         to={{
                           pathname: "/questiontopool",
-                          state: { type: location.state.type },
+                          state: { type: location.state.type, cid: cid },
                         }}
                       >
                         <button type="submit" class="btn">

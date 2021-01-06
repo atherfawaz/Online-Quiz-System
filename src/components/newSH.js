@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../App.css";
 import TextField from "@material-ui/core/TextField";
+import axios from 'axios';
 
-const NewSH = () => {
+const NewSH = ({classID}) => {
   const [k1, setk1] = useState("");
   const [k2, setk2] = useState("");
   const [k3, setk3] = useState("");
   const [question, setQuestion] = useState("");
   const [marks, setMarks] = useState("");
+
+  console.log()
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,10 +22,32 @@ const NewSH = () => {
     },
   }));
 
-  const makeAxiosCall = () => {
+  const makeAxiosCall = async () => {
     console.log(
       "Variables set. Placeholder function for axios call. Just send variables from inside this function."
     );
+    const keywords = [k1, k2, k3];
+    console.log("question: ", question);
+    console.log("Keywords: ", keywords);
+    console.log("marks: ", marks);
+    try {
+      const res = await axios
+        .post("http://localhost:8000/add-question", {
+          token: localStorage.token,
+          cid: classID,
+          type: "short",
+          question: { "question":question, 
+          "keywords":keywords,
+          "marks": marks 
+        }
+        });
+        console.log(res);
+        setQuestion('');
+        setMarks('');
+    }
+    catch (e) {
+      console.log(e);
+    }
   };
 
   const handleClick = () => {

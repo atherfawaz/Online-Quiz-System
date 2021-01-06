@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../App.css";
 import TextField from "@material-ui/core/TextField";
+import axios from 'axios';
 
-const NewLQ = () => {
+const NewLQ = ({ classID }) => {
   const [k1, setk1] = useState("");
   const [k2, setk2] = useState("");
   const [k3, setk3] = useState("");
@@ -17,6 +18,8 @@ const NewLQ = () => {
   const [question, setQuestion] = useState("");
   const [marks, setMarks] = useState("");
 
+  console.log("Class ID in long question: ", classID);
+
   const useStyles = makeStyles((theme) => ({
     root: {
       "& > *": {
@@ -26,10 +29,32 @@ const NewLQ = () => {
     },
   }));
 
-  const makeAxiosCall = () => {
+  const makeAxiosCall = async () => {
     console.log(
       "Variables set. Placeholder function for axios call. Just send variables from inside this function."
     );
+    const keywords = [k1, k2, k3, k4, k6, k7, k8, k9, k10];
+    console.log("question: ", question);
+    console.log("Keywords: ", keywords);
+    console.log("marks: ", marks);
+    try {
+      const res = await axios
+        .post("http://localhost:8000/add-question", {
+          token: localStorage.token,
+          cid: classID,
+          type: "long",
+          question: { "question":question, 
+          "keywords":keywords,
+          "marks": marks 
+        }
+        });
+        console.log(res);
+        setQuestion('');
+        setMarks('');
+    }
+    catch (e) {
+      console.log(e);
+    }
   };
 
   const handleClick = () => {

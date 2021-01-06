@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../App.css";
 import TextField from "@material-ui/core/TextField";
+import axios from 'axios';
 
-const NewCmatch = () => {
+const NewCmatch = ({classID}) => {
   const [question, setQuestion] = useState("");
   const [marks, setMarks] = useState("");
   const [s1, sets1] = useState("");
@@ -27,6 +28,25 @@ const NewCmatch = () => {
   const [a9, seta9] = useState("");
   const [a10, seta10] = useState("");
 
+  const shuffle = (array) => {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  }
+
   const useStyles = makeStyles((theme) => ({
     root: {
       "& > *": {
@@ -36,10 +56,31 @@ const NewCmatch = () => {
     },
   }));
 
-  const makeAxiosCall = () => {
+  const makeAxiosCall = async () => {
     console.log(
       "Variables set. Placeholder function for axios call. Just send variables from inside this function."
     );
+    const statements = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10]
+    const correct = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10]
+    let answers = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10]
+    shuffle(answers);
+    try{
+      const res = await axios
+      .post("http://localhost:8000/add-question", {
+        token: localStorage.token,
+        cid: classID,
+        type: "cmatch",
+        question: { "statements":statements, 
+        "answers":answers,
+        "correct":correct,
+        "marks": marks 
+      }
+      });
+      console.log(res);
+    }
+    catch(error){
+      console.log(error.request);
+    }
   };
 
   const handleClick = () => {

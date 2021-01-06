@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {useLocation} from 'react-router-dom'
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -20,95 +21,7 @@ import NewLQ from "../components/newLQ";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
-  // const addMCQ = async () => {
-  //     axios
-  //       .post("http://localhost:8000/add-question", {
-  //         token: localStorage.token,
-  //         cid: localStorage.cid,
-  //         type: "mcqs",
-  //         question: {"question": , "choices":[], "correct": , "marks":  }
-  //       })
-  //       .then(function (response) {
-  //         console.log(response);
-  //         SetCourses(response.data.courses);
-  //         return;
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   };
-
-  // const addShort = async () => {
-  //     axios
-  //       .post("http://localhost:8000/add-question", {
-  //         token: localStorage.token,
-  //         cid: localStorage.cid,
-  //         type: "short",
-  //         question: {"question": , "keywords":[], "marks":  }
-  //       })
-  //       .then(function (response) {
-  //         console.log(response);
-  //         SetCourses(response.data.courses);
-  //         return;
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   };
-
-  // const addLong = async () => {
-  //     axios
-  //       .post("http://localhost:8000/add-question", {
-  //         token: localStorage.token,
-  //         cid: localStorage.cid,
-  //         type: "long",
-  //         question: {"question": , "keywords":[], "marks":  }
-  //       })
-  //       .then(function (response) {
-  //         console.log(response);
-  //         SetCourses(response.data.courses);
-  //         return;
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   };
-
-  // const addFib = async () => {
-  //     axios
-  //       .post("http://localhost:8000/add-question", {
-  //         token: localStorage.token,
-  //         cid: localStorage.cid,
-  //         type: "fib",
-  //         question: {"question": , "answer":, "marks":  }
-  //       })
-  //       .then(function (response) {
-  //         console.log(response);
-  //         SetCourses(response.data.courses);
-  //         return;
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   };
-
-  // const addCmatch = async () => {
-  //     axios
-  //       .post("http://localhost:8000/add-question", {
-  //         token: localStorage.token,
-  //         cid: localStorage.cid,
-  //         type: "cmatch",
-  //         question: {"statements": [] , "answers": [],"correct": [], "marks":  }
-  //       })
-  //       .then(function (response) {
-  //         console.log(response);
-  //         SetCourses(response.data.courses);
-  //         return;
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   };
+  
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -159,7 +72,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleTabs() {
   const classes = useStyles();
+  const location = useLocation();
   const [value, setValue] = React.useState(0);
+  const [cid, setCid] = React.useState('');
+
+  useEffect(() => {
+    setCid(location.state.cid);
+  }, [localStorage]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -169,6 +88,7 @@ export default function SimpleTabs() {
     console.log("e: ", e.target.value);
   };
 
+  console.log("cid in add questions to pool page: " , cid);
   return (
     <div className={classes.root}>
       <Loader />
@@ -209,19 +129,19 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <NewMCQ />
+        <NewMCQ classID={cid}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <NewFIB />
+        <NewFIB  classID={cid}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <NewSQ />
+        <NewSQ classID={cid}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <NewLQ />
+        <NewLQ  classID={cid}/>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <NewCmatch />
+        <NewCmatch classID={cid} />
       </TabPanel>
     </div>
   );

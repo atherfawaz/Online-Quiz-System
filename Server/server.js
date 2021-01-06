@@ -193,7 +193,7 @@ app.post("/add-question", async (req, res) => {
     token: joi.string().required(),
     cid: joi.string().required(),
     type: joi.string().required(),
-    question: joi.any().required(),
+    question: joi.required(),
   });
   const { error } = schema.validate(req.body);
   if (error) return res.status(400).json({ error: error });
@@ -233,16 +233,16 @@ app.post("/add-question", async (req, res) => {
           answer: req.body.question.answer,
           marks: req.body.question.marks,
         });
-        course.pool.Short.FIB.push(fib);
+        course.pool.FIB.push(fib);
         break;
       case "cmatch":
         const cmatch = new CMatch({
           statements: req.body.question.statements,
           answers: req.body.question.answers,
-          correct: req.body.questions.correct,
+          correct: req.body.question.correct,
           marks: req.body.question.marks,
         });
-        course.pool.Short.CMatch.push(cmatch);
+        course.pool.CMatch.push(cmatch);
         break;
       default:
         break;

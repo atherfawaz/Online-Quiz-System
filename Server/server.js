@@ -5,6 +5,11 @@ const mongoose = require("mongoose");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const path = require('path');
+const publicPath = path.join(__dirname, "..", "build");
+const port = process.env.PORT || 8000;
+
+
 
 // db models
 const User = require("./models/User");
@@ -22,6 +27,8 @@ var app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
+app.use(express.static(publicPath));
+
 
 // establishing connection to database
 mongoose.connect(
@@ -36,7 +43,13 @@ mongoose.connect(
   }
 );
 
-// endpoints
+
+// default end point to load react app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
+
+// REST  endpoints
 app.post("/login", async (req, res) => {
   console.log(req.body);
   const schema = joi.object({
@@ -373,6 +386,6 @@ app.post("/get-quiz", async (req, res) => {
 });
 
 //server start notification
-app.listen(8000, () => {
-  console.log("Server is listnening on the port 8000");
+app.listen(port, () => {
+  console.log("Server is listening on the port 8000");
 });

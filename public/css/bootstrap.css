@@ -4617,7 +4617,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse .navbar-nav > .disabled > a:hover,
 .navbar-inverse .navbar-nav > .disabled > a:focus {
   color: #444;
-  background-color: ;
+  /* background-color: ; */
 }
 .navbar-inverse .navbar-toggle {
   border-color: #333;
@@ -6750,4 +6750,3 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */

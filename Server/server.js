@@ -45,9 +45,16 @@ mongoose.connect(
 
 
 // default end point to load react app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(publicPath, 'index.html'));
+// });
+
+if(process.env.NODE_ENV === 'production'){
+  const path  =  require('path');
+  app.get('/*',(req,res)=>{
+      res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+  })
+}
 
 // REST  endpoints
 app.post("/login", async (req, res) => {

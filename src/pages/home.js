@@ -25,7 +25,7 @@ function Home() {
 
   const Login = () => {
     axios
-      .post("http://localhost:8000/login", {
+      .post("/api/login", {
         username: login_username,
         password: login_password,
       })

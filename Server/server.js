@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const path = require('path');
 const publicPath = path.join(__dirname, "..", "build");
-const port = 8000;///process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 
 
 

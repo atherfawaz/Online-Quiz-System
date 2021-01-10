@@ -25,7 +25,7 @@ function Home() {
 
   const Login = () => {
     axios
-      .post("/api/login", {
+      .post("/login", {
         username: login_username,
         password: login_password,
       })

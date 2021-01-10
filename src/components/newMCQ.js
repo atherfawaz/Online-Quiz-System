@@ -29,7 +29,7 @@ const NewMCQ = ({classID}) => {
     const choices = [option1, option2, option3, option4];
     try{
       const res = await axios
-      .post("http://localhost:8000/add-question", {
+      .post("/add-question", {
         token: localStorage.token,
         cid: classID,
         type: "mcqs",

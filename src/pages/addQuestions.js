@@ -65,7 +65,7 @@ const AddQuestions = () => {
         })
         .forEach((elem) => long.push(elem.question._id));
 
-      const res = await axios.post("http://localhost:8000/create-quiz", {
+      const res = await axios.post("/create-quiz", {
         token: localStorage.token,
         cid: cid,
         qno: Number(quizNum),
@@ -99,7 +99,7 @@ const AddQuestions = () => {
     try {
       console.log("token: ", localStorage.token);
       console.log("cid:", location.state.cid);
-      const res = await axios.post("http://localhost:8000/get-questions", {
+      const res = await axios.post("/get-questions", {
         token: localStorage.token,
         cid: location.state.cid,
       });

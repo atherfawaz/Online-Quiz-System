@@ -15,7 +15,7 @@ function CreateClass() {
     try {
       console.log("i got to addCourse function");
       if (localStorage.token) {
-        const res = axios.post("http://localhost:8000/create-course", {
+        const res = axios.post("/create-course", {
           token: localStorage.token,
           tuid: localStorage.uid,
           name: name,

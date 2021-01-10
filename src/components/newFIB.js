@@ -27,7 +27,7 @@ const NewFIB = ({ classID }) => {
     console.log("marks: ", marks)
     try {
       const res = await axios
-        .post("http://localhost:8000/add-question", {
+        .post("/add-question", {
           token: localStorage.token,
           cid: classID,
           type: "fib",

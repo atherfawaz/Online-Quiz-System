@@ -22,7 +22,7 @@ function CourseGrid() {
 
   const getCourses = async () => {
     axios
-      .post("http://localhost:8000/get-courses", {
+      .post("/get-courses", {
         token: localStorage.token,
         uid: localStorage.uid,
       })

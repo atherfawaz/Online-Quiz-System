@@ -52,7 +52,7 @@ function Home() {
 
   const Register = () => {
     axios
-      .post("http://localhost:8000/register", {
+      .post("/register", {
         name: register_username,
         password: register_password,
         email: register_email,
